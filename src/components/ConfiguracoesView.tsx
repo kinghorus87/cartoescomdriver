@@ -59,6 +59,43 @@ export type SectionKey =
 
 export const PINNED_STORAGE_KEY = 'economias_config_pinned_sections';
 
+interface StoragePanelBoundaryState {
+  error: Error | null;
+}
+
+class StoragePanelBoundary extends React.Component<React.PropsWithChildren, StoragePanelBoundaryState> {
+  state: StoragePanelBoundaryState = { error: null };
+
+  static getDerivedStateFromError(error: Error): StoragePanelBoundaryState {
+    return { error };
+  }
+
+  componentDidCatch(error: Error) {
+    console.error('Falha ao carregar o painel do arquivo local:', error);
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="p-4 rounded-2xl border border-rose-500/30 bg-rose-500/10 space-y-2" role="alert">
+          <h4 className="text-sm font-bold text-rose-200">Não foi possível carregar o painel do arquivo local</h4>
+          <p className="text-xs text-rose-200/80">As outras configurações e as opções de importar/exportar JSON continuam disponíveis.</p>
+          <pre className="text-[11px] text-rose-300 whitespace-pre-wrap break-words">{this.state.error.message}</pre>
+          <button
+            type="button"
+            onClick={() => this.setState({ error: null })}
+            className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold border border-slate-700"
+          >
+            Tentar carregar novamente
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 interface ConfiguracoesViewProps {
   appData: SeedData;
   onUpdateAppData: (data: SeedData) => void;
@@ -655,6 +692,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
 
         {/* Conteúdo Expansível da Seção 1 */}
         {isSectionOpen('arquivo_local') && (
+          <StoragePanelBoundary>
           <div className="mt-5 space-y-5 animate-in fade-in duration-200">
             <div className="p-3 bg-emerald-500/10 border border-emerald-500/25 rounded-2xl flex items-center gap-2.5 text-xs text-emerald-300">
               <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-400" />
@@ -698,6 +736,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
             </div>
 
           </div>
+          </StoragePanelBoundary>
         )}
       </div>
 
