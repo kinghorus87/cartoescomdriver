@@ -119,7 +119,7 @@ export const DriveFileStorage: React.FC<DriveFileStorageProps> = ({ appData, onU
 
       <div className={`p-3 rounded-xl border text-xs flex items-start gap-2 ${status.state === 'connected' ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-300' : status.state === 'invalid-file' ? 'bg-rose-500/10 border-rose-500/25 text-rose-300' : 'bg-slate-900/70 border-slate-700 text-slate-300'}`}>
         {status.state === 'invalid-file' ? <AlertTriangle className="w-4 h-4 shrink-0" /> : <FileJson className="w-4 h-4 shrink-0" />}
-        <span>{statusText}</span>
+        <span>{statusText[status.state]}</span>
       </div>
 
       {status.lastWriteError && <p className="text-xs text-rose-300" role="alert">Falha ao gravar no arquivo: {status.lastWriteError}</p>}
