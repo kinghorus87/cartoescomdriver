@@ -1,13 +1,14 @@
 # Cartões
 
-Aplicativo de gestão de cartões e despesas. O armazenamento local continua ativo; as cópias no Google Drive são manuais e opcionais.
+Aplicativo web de gestão de cartões e despesas. Os dados ficam no armazenamento do navegador até você escolher um arquivo JSON local. Para sincronizá-los entre computadores, escolha o arquivo dentro da pasta sincronizada pelo Google Drive para computador.
 
 ## Executar localmente
 
-Pré-requisito: Node.js.
+Pré-requisito: Node.js e npm.
 
 1. Instale as dependências com `npm install`.
-2. (Opcional) Configure `VITE_GOOGLE_CLIENT_ID` em `.env.local` para habilitar os backups do Drive; veja [GOOGLE_DRIVE_SETUP.md](GOOGLE_DRIVE_SETUP.md).
-3. Execute `npm run dev` e abra `http://localhost:3000`.
+2. Execute `npm run dev`.
+3. Abra `http://localhost:3000` no Chrome ou Edge.
+4. Em Configurações, escolha um arquivo local ou crie um novo. Veja [DRIVE_PASTA_LOCAL.md](DRIVE_PASTA_LOCAL.md).
 
-Para gerar a versão web, execute `npm run build`. O app salva os dados no armazenamento local do navegador.
+Para gerar a versão web, execute `npm run build`.

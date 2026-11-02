@@ -30,7 +30,7 @@ import {
 import { SeedData, TabPreferences, CustomTabNames, ThemeConfig } from '../types';
 import { resetToOriginalData } from '../utils/browserStorage';
 import { exportBackup } from '../utils/storage';
-import { GoogleDriveBackup } from './GoogleDriveBackup';
+import { DriveFileStorage } from './DriveFileStorage';
 import { ModalConfirmacao } from './ModalConfirmacao';
 import { 
   COMPLETE_THEME_PRESETS,
@@ -544,7 +544,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Dados neste navegador + cópia opcional no Drive</span>
+            <span>Dados no navegador ou pasta sincronizada</span>
           </span>
         </div>
       </div>
@@ -621,7 +621,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-400">Dados salvos neste navegador, exportação JSON e cópia no Drive</p>
+              <p className="text-xs text-slate-400">Arquivo local, pasta sincronizada e cópias JSON</p>
             </div>
           </div>
 
@@ -663,7 +663,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
               </span>
             </div>
 
-            <GoogleDriveBackup appData={appData} onUpdateAppData={onUpdateAppData} />
+            <DriveFileStorage appData={appData} onUpdateAppData={onUpdateAppData} />
 
             {/* Exportação e importação de cópias JSON */}
             <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-2.5">

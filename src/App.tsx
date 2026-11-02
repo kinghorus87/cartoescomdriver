@@ -125,7 +125,9 @@ export default function App() {
           // Aplica poda de dados fora da janela móvel de 36 meses
           const { data: pruned, prunedMonthsCount, prunedTxsCount } = pruneOutOfWindowData(loaded);
           if (prunedMonthsCount > 0 || prunedTxsCount > 0) {
-            saveBrowserData(pruned).catch(console.error);
+            saveBrowserData(pruned).then((result) => {
+              if (!result.success) console.error(result.error);
+            }).catch(console.error);
           }
           setData(pruned);
         }
@@ -154,7 +156,9 @@ export default function App() {
       setData((current) => {
         const { data: pruned, prunedMonthsCount, prunedTxsCount } = pruneOutOfWindowData(current);
         if (prunedMonthsCount > 0 || prunedTxsCount > 0) {
-          saveBrowserData(pruned).catch(console.error);
+          saveBrowserData(pruned).then((result) => {
+            if (!result.success) console.error(result.error);
+          }).catch(console.error);
           return pruned;
         }
         return current;
@@ -174,7 +178,9 @@ export default function App() {
   // Salvamento contínuo e atômico a cada alteração
   useEffect(() => {
     if (!dataReady || !initialLoadDone.current) return;
-    saveBrowserData(data).catch((err) => {
+    saveBrowserData(data).then((result) => {
+      if (!result.success) console.error(result.error);
+    }).catch((err) => {
       console.error('Falha ao persistir dados locais:', err);
     });
   }, [data, dataReady]);

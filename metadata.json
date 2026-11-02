@@ -1,8 +1,5 @@
 {
   "name": "Cartões",
-  "description": "Sistema de gestão financeira, controle de cartões de crédito, parcelamento, limites e despesas com cópias de segurança no Google Drive.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "description": "Sistema de gestão financeira com dados em arquivo local, compatível com pastas sincronizadas pelo Google Drive para computador.",
+  "requestFramePermissions": []
 }
