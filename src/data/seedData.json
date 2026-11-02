@@ -1,0 +1,3911 @@
+{
+  "cards": [
+    {
+      "id": "nubank_celia",
+      "name": "NUBANK CELIA",
+      "limite": 2700.0,
+      "disponivel": 1282.8899999999999,
+      "dueDay": "",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "NUBANK CELIA-1-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "7/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ],
+        "2": [
+          {
+            "id": "NUBANK CELIA-2-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "8/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ],
+        "3": [
+          {
+            "id": "NUBANK CELIA-3-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "9/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ],
+        "4": [
+          {
+            "id": "NUBANK CELIA-4-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "10/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "NUBANK CELIA-11-43",
+            "linha": 43,
+            "data": "10/01/2026",
+            "descricao": "pneus",
+            "parcelas": "10/10",
+            "valor": 33.56,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK CELIA-11-44",
+            "linha": 44,
+            "data": "10/01/2026",
+            "descricao": "pneus (Divisão)",
+            "parcelas": "10/10",
+            "valor": 33.55,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK CELIA-11-45",
+            "linha": 45,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "5/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ],
+        "12": [
+          {
+            "id": "NUBANK CELIA-12-43",
+            "linha": 43,
+            "data": "10/06/2026",
+            "descricao": "celular stefane",
+            "parcelas": "6/10",
+            "valor": 225.0,
+            "pagador": "Stefane"
+          }
+        ]
+      }
+    },
+    {
+      "id": "caixa_2",
+      "name": "CAIXA 2",
+      "limite": 1500.0,
+      "disponivel": 1243.37,
+      "dueDay": "dia 01",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "CAIXA 2-1-19",
+            "linha": 19,
+            "data": "29/09/2026",
+            "descricao": "Principe perfume",
+            "parcelas": "3/3",
+            "valor": 52.0,
+            "pagador": "keythy"
+          },
+          {
+            "id": "CAIXA 2-1-20",
+            "linha": 20,
+            "data": "29/09/2026",
+            "descricao": "Fraldas",
+            "parcelas": "3/3",
+            "valor": 16.67,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "CAIXA 2-1-21",
+            "linha": 21,
+            "data": "29/09/2026",
+            "descricao": "Fraldas (Divisão)",
+            "parcelas": "3/3",
+            "valor": 16.67,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "CAIXA 2-11-43",
+            "linha": 43,
+            "data": "29/09/2026",
+            "descricao": "Principe perfume",
+            "parcelas": "1/3",
+            "valor": 51.28,
+            "pagador": "keythy"
+          },
+          {
+            "id": "CAIXA 2-11-44",
+            "linha": 44,
+            "data": "29/09/2026",
+            "descricao": "Fraldas",
+            "parcelas": "1/3",
+            "valor": 16.67,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "CAIXA 2-11-45",
+            "linha": 45,
+            "data": "29/09/2026",
+            "descricao": "Fraldas (Divisão)",
+            "parcelas": "1/3",
+            "valor": 0.0,
+            "pagador": "Celia"
+          },
+          {
+            "id": "CAIXA 2-11-46",
+            "linha": 46,
+            "data": "30/09/2026",
+            "descricao": "hamburguer",
+            "parcelas": "1/1",
+            "valor": 18.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "12": [
+          {
+            "id": "CAIXA 2-12-43",
+            "linha": 43,
+            "data": "29/09/2026",
+            "descricao": "Principe perfume",
+            "parcelas": "2/3",
+            "valor": 52.0,
+            "pagador": "keythy"
+          },
+          {
+            "id": "CAIXA 2-12-44",
+            "linha": 44,
+            "data": "29/09/2026",
+            "descricao": "Fraldas",
+            "parcelas": "2/3",
+            "valor": 16.67,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "CAIXA 2-12-45",
+            "linha": 45,
+            "data": "29/09/2026",
+            "descricao": "Fraldas (Divisão)",
+            "parcelas": "2/3",
+            "valor": 16.67,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "brasil_celia",
+      "name": "BRASIL CELIA",
+      "limite": 5530.0,
+      "disponivel": 4709.35,
+      "dueDay": "dia 28",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "BRASIL CELIA-1-19",
+            "linha": 19,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo",
+            "parcelas": "11/12",
+            "valor": 28.04,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-1-20",
+            "linha": 20,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo (Divisão)",
+            "parcelas": "11/12",
+            "valor": 28.04,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-1-21",
+            "linha": 21,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "8/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-1-22",
+            "linha": 22,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "8/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          }
+        ],
+        "2": [
+          {
+            "id": "BRASIL CELIA-2-19",
+            "linha": 19,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo",
+            "parcelas": "12/12",
+            "valor": 0.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-2-20",
+            "linha": 20,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo (Divisão)",
+            "parcelas": "12/12",
+            "valor": 0.0,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-2-21",
+            "linha": 21,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "9/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-2-22",
+            "linha": 22,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "9/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          }
+        ],
+        "3": [
+          {
+            "id": "BRASIL CELIA-3-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "10/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-3-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "10/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          }
+        ],
+        "4": [
+          {
+            "id": "BRASIL CELIA-4-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "11/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-4-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "11/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          }
+        ],
+        "5": [
+          {
+            "id": "BRASIL CELIA-5-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "12/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-5-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "12/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          }
+        ],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [
+          {
+            "id": "BRASIL CELIA-10-43",
+            "linha": 43,
+            "data": "29/05/2026",
+            "descricao": "principe perfume",
+            "parcelas": "5/6",
+            "valor": 26.5,
+            "pagador": "rosangela"
+          }
+        ],
+        "11": [
+          {
+            "id": "BRASIL CELIA-11-43",
+            "linha": 43,
+            "data": "05/01/2026",
+            "descricao": "Porta e tinta escola",
+            "parcelas": "10/10",
+            "valor": 91.18,
+            "pagador": "Escola"
+          },
+          {
+            "id": "BRASIL CELIA-11-44",
+            "linha": 44,
+            "data": "06/01/2026",
+            "descricao": "encontro igreja",
+            "parcelas": "10/10",
+            "valor": 42.33,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-11-45",
+            "linha": 45,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo",
+            "parcelas": "9/12",
+            "valor": 28.04,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-11-46",
+            "linha": 46,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo (Divisão)",
+            "parcelas": "9/12",
+            "valor": 28.04,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-11-47",
+            "linha": 47,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "6/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-11-48",
+            "linha": 48,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "6/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-11-49",
+            "linha": 49,
+            "data": "29/09/2026",
+            "descricao": "principe perfume",
+            "parcelas": "5/6",
+            "valor": 26.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-11-50",
+            "linha": 50,
+            "data": "29/05/2026",
+            "descricao": "principe perfume",
+            "parcelas": "5/6",
+            "valor": 26.5,
+            "pagador": "rosangela"
+          }
+        ],
+        "12": [
+          {
+            "id": "BRASIL CELIA-12-43",
+            "linha": 43,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo",
+            "parcelas": "10/12",
+            "valor": 28.04,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-12-44",
+            "linha": 44,
+            "data": "05/02/2026",
+            "descricao": "cadeira ergo (Divisão)",
+            "parcelas": "10/12",
+            "valor": 28.04,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-12-45",
+            "linha": 45,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "7/12",
+            "valor": 27.6,
+            "pagador": "Celia"
+          },
+          {
+            "id": "BRASIL CELIA-12-46",
+            "linha": 46,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "7/12",
+            "valor": 27.6,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-12-47",
+            "linha": 47,
+            "data": "29/09/2026",
+            "descricao": "principe perfume",
+            "parcelas": "6/6",
+            "valor": 26.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "BRASIL CELIA-12-48",
+            "linha": 48,
+            "data": "29/05/2026",
+            "descricao": "principe perfume",
+            "parcelas": "6/6",
+            "valor": 26.5,
+            "pagador": "rosangela"
+          }
+        ]
+      }
+    },
+    {
+      "id": "magalu",
+      "name": "MAGALU",
+      "limite": 2200.0,
+      "disponivel": 2200.0,
+      "dueDay": "dia 14",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "inter_franks",
+      "name": "INTER FRANKS",
+      "limite": 9080.0,
+      "disponivel": 7787.32,
+      "dueDay": "dia 6",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "INTER FRANKS-1-19",
+            "linha": 19,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "17/18",
+            "valor": 182.99,
+            "pagador": "celia"
+          },
+          {
+            "id": "INTER FRANKS-1-20",
+            "linha": 20,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "17/18",
+            "valor": 100.0,
+            "pagador": "paloma"
+          },
+          {
+            "id": "INTER FRANKS-1-21",
+            "linha": 21,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "8/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-1-22",
+            "linha": 22,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "8/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [
+          {
+            "id": "INTER FRANKS-2-19",
+            "linha": 19,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "18/18",
+            "valor": 182.99,
+            "pagador": "celia"
+          },
+          {
+            "id": "INTER FRANKS-2-20",
+            "linha": 20,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "18/18",
+            "valor": 100.0,
+            "pagador": "paloma"
+          },
+          {
+            "id": "INTER FRANKS-2-21",
+            "linha": 21,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "9/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-2-22",
+            "linha": 22,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "9/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "INTER FRANKS-3-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "10/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-3-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "10/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "INTER FRANKS-4-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "11/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-4-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "11/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "INTER FRANKS-5-19",
+            "linha": 19,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "12/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-5-20",
+            "linha": 20,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "12/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "INTER FRANKS-11-43",
+            "linha": 43,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "15/18",
+            "valor": 182.99,
+            "pagador": "celia"
+          },
+          {
+            "id": "INTER FRANKS-11-44",
+            "linha": 44,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "15/18",
+            "valor": 100.0,
+            "pagador": "paloma"
+          },
+          {
+            "id": "INTER FRANKS-11-45",
+            "linha": 45,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "6/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-11-46",
+            "linha": 46,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "6/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "INTER FRANKS-12-43",
+            "linha": 43,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "16/18",
+            "valor": 182.99,
+            "pagador": "celia"
+          },
+          {
+            "id": "INTER FRANKS-12-44",
+            "linha": 44,
+            "data": "14/08/2025",
+            "descricao": "iphone 14 pro max",
+            "parcelas": "16/18",
+            "valor": 100.0,
+            "pagador": "paloma"
+          },
+          {
+            "id": "INTER FRANKS-12-45",
+            "linha": 45,
+            "data": "11/05/2026",
+            "descricao": "aliexpress",
+            "parcelas": "7/12",
+            "valor": 11.48,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "INTER FRANKS-12-46",
+            "linha": 46,
+            "data": "11/05/2026",
+            "descricao": "aliexpress (Divisão)",
+            "parcelas": "7/12",
+            "valor": 11.48,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "neon_celia",
+      "name": "NEON CELIA",
+      "limite": 1220.0,
+      "disponivel": 1220.0,
+      "dueDay": "dia 09",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "nubank_franks",
+      "name": "NUBANK FRANKS",
+      "limite": 2250.0,
+      "disponivel": 958.1200000000001,
+      "dueDay": "dia 09",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "NUBANK FRANKS-1-19",
+            "linha": 19,
+            "data": "13/04/2026",
+            "descricao": "glamour secrets",
+            "parcelas": "9/10",
+            "valor": 23.78,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-1-20",
+            "linha": 20,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa",
+            "parcelas": "8/10",
+            "valor": 20.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-1-21",
+            "linha": 21,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa (Divisão)",
+            "parcelas": "8/10",
+            "valor": 20.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-1-22",
+            "linha": 22,
+            "data": "10/05/2026",
+            "descricao": "mercado livre escovas",
+            "parcelas": "8/10",
+            "valor": 8.19,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-1-23",
+            "linha": 23,
+            "data": "04/09/2026",
+            "descricao": "pague menos",
+            "parcelas": "5/5",
+            "valor": 50.7,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-1-24",
+            "linha": 24,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna",
+            "parcelas": "4/5",
+            "valor": 22.83,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-1-25",
+            "linha": 25,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna (Divisão)",
+            "parcelas": "4/5",
+            "valor": 22.83,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-1-26",
+            "linha": 26,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "3/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "2": [
+          {
+            "id": "NUBANK FRANKS-2-19",
+            "linha": 19,
+            "data": "13/04/2026",
+            "descricao": "glamour secrets",
+            "parcelas": "10/10",
+            "valor": 23.78,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-2-20",
+            "linha": 20,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa",
+            "parcelas": "9/10",
+            "valor": 20.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-2-21",
+            "linha": 21,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa (Divisão)",
+            "parcelas": "9/10",
+            "valor": 20.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-2-22",
+            "linha": 22,
+            "data": "10/05/2026",
+            "descricao": "mercado livre escovas",
+            "parcelas": "9/10",
+            "valor": 8.19,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-2-23",
+            "linha": 23,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna",
+            "parcelas": "5/5",
+            "valor": 22.83,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-2-24",
+            "linha": 24,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna (Divisão)",
+            "parcelas": "5/5",
+            "valor": 22.83,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-2-25",
+            "linha": 25,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "4/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "3": [
+          {
+            "id": "NUBANK FRANKS-3-19",
+            "linha": 19,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa",
+            "parcelas": "10/10",
+            "valor": 20.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-3-20",
+            "linha": 20,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa (Divisão)",
+            "parcelas": "10/10",
+            "valor": 20.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-3-21",
+            "linha": 21,
+            "data": "10/05/2026",
+            "descricao": "mercado livre escovas",
+            "parcelas": "10/10",
+            "valor": 8.19,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-3-22",
+            "linha": 22,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "5/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "4": [
+          {
+            "id": "NUBANK FRANKS-4-19",
+            "linha": 19,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "6/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "5": [
+          {
+            "id": "NUBANK FRANKS-5-19",
+            "linha": 19,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "7/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "6": [
+          {
+            "id": "NUBANK FRANKS-6-19",
+            "linha": 19,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "8/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "7": [
+          {
+            "id": "NUBANK FRANKS-7-43",
+            "linha": 43,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "9/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "8": [
+          {
+            "id": "NUBANK FRANKS-8-43",
+            "linha": 43,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "10/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "9": [
+          {
+            "id": "NUBANK FRANKS-9-43",
+            "linha": 43,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "11/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          }
+        ],
+        "10": [],
+        "11": [
+          {
+            "id": "NUBANK FRANKS-11-43",
+            "linha": 43,
+            "data": "16/12/2025",
+            "descricao": "Suporte, joias, sela bike",
+            "parcelas": "11/12",
+            "valor": 13.91,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-44",
+            "linha": 44,
+            "data": "16/12/2025",
+            "descricao": "Suporte, joias, sela bike (Divisão)",
+            "parcelas": "11/12",
+            "valor": 13.9,
+            "pagador": "celia"
+          },
+          {
+            "id": "NUBANK FRANKS-11-45",
+            "linha": 45,
+            "data": "13/04/2026",
+            "descricao": "glamour secrets",
+            "parcelas": "7/10",
+            "valor": 23.78,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-46",
+            "linha": 46,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa",
+            "parcelas": "6/10",
+            "valor": 20.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-47",
+            "linha": 47,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa (Divisão)",
+            "parcelas": "6/10",
+            "valor": 20.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-11-48",
+            "linha": 48,
+            "data": "10/05/2026",
+            "descricao": "mercado livre escovas",
+            "parcelas": "6/10",
+            "valor": 8.19,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-49",
+            "linha": 49,
+            "data": "02/06/2026",
+            "descricao": "presente maria eduarda",
+            "parcelas": "6/6",
+            "valor": 38.65,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-50",
+            "linha": 50,
+            "data": "04/09/2026",
+            "descricao": "pague menos",
+            "parcelas": "3/5",
+            "valor": 50.7,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-51",
+            "linha": 51,
+            "data": "16/09/2026",
+            "descricao": "temakis (pix parce)",
+            "parcelas": "2/2",
+            "valor": 27.24,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-52",
+            "linha": 52,
+            "data": "16/09/2026",
+            "descricao": "temakis (pix parce) (Divisão)",
+            "parcelas": "2/2",
+            "valor": 27.24,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-11-53",
+            "linha": 53,
+            "data": "17/09/2026",
+            "descricao": "wepink",
+            "parcelas": "2/3",
+            "valor": 17.87,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-54",
+            "linha": 54,
+            "data": "17/09/2026",
+            "descricao": "wepink (Divisão)",
+            "parcelas": "2/3",
+            "valor": 17.87,
+            "pagador": "Gabi"
+          },
+          {
+            "id": "NUBANK FRANKS-11-55",
+            "linha": 55,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna",
+            "parcelas": "2/5",
+            "valor": 22.83,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-56",
+            "linha": 56,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna (Divisão)",
+            "parcelas": "2/5",
+            "valor": 22.83,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-11-57",
+            "linha": 57,
+            "data": "21/09/2026",
+            "descricao": "Lojão",
+            "parcelas": "2/2",
+            "valor": 26.99,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-58",
+            "linha": 58,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "1/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-59",
+            "linha": 59,
+            "data": "12/10/2026",
+            "descricao": "roupa raul",
+            "parcelas": "1/2",
+            "valor": 13.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-60",
+            "linha": 60,
+            "data": "12/10/2026",
+            "descricao": "roupa raul (Divisão)",
+            "parcelas": "1/2",
+            "valor": 13.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-11-61",
+            "linha": 61,
+            "data": "12/10/2026",
+            "descricao": "mercado estrela",
+            "parcelas": "1/2",
+            "valor": 24.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-11-62",
+            "linha": 62,
+            "data": "12/10/2026",
+            "descricao": "mercado estrela (Divisão)",
+            "parcelas": "1/2",
+            "valor": 24.09,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "NUBANK FRANKS-12-43",
+            "linha": 43,
+            "data": "16/12/2025",
+            "descricao": "Suporte, joias, sela bike",
+            "parcelas": "12/12",
+            "valor": 13.91,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-44",
+            "linha": 44,
+            "data": "16/12/2025",
+            "descricao": "Suporte, joias, sela bike (Divisão)",
+            "parcelas": "12/12",
+            "valor": 13.9,
+            "pagador": "celia"
+          },
+          {
+            "id": "NUBANK FRANKS-12-45",
+            "linha": 45,
+            "data": "13/04/2026",
+            "descricao": "glamour secrets",
+            "parcelas": "8/10",
+            "valor": 23.78,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-46",
+            "linha": 46,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa",
+            "parcelas": "7/10",
+            "valor": 20.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-47",
+            "linha": 47,
+            "data": "10/05/2026",
+            "descricao": "mercado livre bolsa (Divisão)",
+            "parcelas": "7/10",
+            "valor": 20.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-12-48",
+            "linha": 48,
+            "data": "10/05/2026",
+            "descricao": "mercado livre escovas",
+            "parcelas": "7/10",
+            "valor": 8.19,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-49",
+            "linha": 49,
+            "data": "04/09/2026",
+            "descricao": "pague menos",
+            "parcelas": "4/5",
+            "valor": 50.7,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-50",
+            "linha": 50,
+            "data": "17/09/2026",
+            "descricao": "wepink",
+            "parcelas": "3/3",
+            "valor": 17.87,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-51",
+            "linha": 51,
+            "data": "17/09/2026",
+            "descricao": "wepink (Divisão)",
+            "parcelas": "3/3",
+            "valor": 17.87,
+            "pagador": "Gabi"
+          },
+          {
+            "id": "NUBANK FRANKS-12-52",
+            "linha": 52,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna",
+            "parcelas": "3/5",
+            "valor": 22.83,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-53",
+            "linha": 53,
+            "data": "08/10/2026",
+            "descricao": "remedio coluna (Divisão)",
+            "parcelas": "3/5",
+            "valor": 22.83,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-12-54",
+            "linha": 54,
+            "data": "09/10/2026",
+            "descricao": "kit maquiagem",
+            "parcelas": "2/12",
+            "valor": 19.71,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-55",
+            "linha": 55,
+            "data": "12/10/2026",
+            "descricao": "roupa raul",
+            "parcelas": "2/2",
+            "valor": 13.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-56",
+            "linha": 56,
+            "data": "12/10/2026",
+            "descricao": "roupa raul (Divisão)",
+            "parcelas": "2/2",
+            "valor": 13.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NUBANK FRANKS-12-57",
+            "linha": 57,
+            "data": "12/10/2026",
+            "descricao": "mercado estrela",
+            "parcelas": "2/2",
+            "valor": 24.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NUBANK FRANKS-12-58",
+            "linha": 58,
+            "data": "12/10/2026",
+            "descricao": "mercado estrela (Divisão)",
+            "parcelas": "2/2",
+            "valor": 24.09,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mercado_celia",
+      "name": "MERCADO CELIA",
+      "limite": 12600.0,
+      "disponivel": 7876.17,
+      "dueDay": "dia 06",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "MERCADO CELIA-1-19",
+            "linha": 19,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "14/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-1-20",
+            "linha": 20,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "6/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [
+          {
+            "id": "MERCADO CELIA-2-19",
+            "linha": 19,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "15/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-2-20",
+            "linha": 20,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "7/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "MERCADO CELIA-3-19",
+            "linha": 19,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "16/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-3-20",
+            "linha": 20,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "8/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "MERCADO CELIA-4-19",
+            "linha": 19,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "17/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-4-20",
+            "linha": 20,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "9/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "MERCADO CELIA-5-19",
+            "linha": 19,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "18/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-5-20",
+            "linha": 20,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "10/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [
+          {
+            "id": "MERCADO CELIA-6-19",
+            "linha": 19,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "11/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO CELIA-6-20",
+            "linha": 20,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "19/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          }
+        ],
+        "7": [
+          {
+            "id": "MERCADO CELIA-7-43",
+            "linha": 43,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "12/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO CELIA-7-44",
+            "linha": 44,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "20/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          }
+        ],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "MERCADO CELIA-11-43",
+            "linha": 43,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "12/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-11-44",
+            "linha": 44,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "4/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "MERCADO CELIA-12-43",
+            "linha": 43,
+            "data": "10/12/2025",
+            "descricao": "notebook celia",
+            "parcelas": "13/24",
+            "valor": 120.75,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO CELIA-12-44",
+            "linha": 44,
+            "data": "24/07/2026",
+            "descricao": "notebook helios",
+            "parcelas": "5/24",
+            "valor": 404.12,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fortbrasil",
+      "name": "FORTBRASIL",
+      "limite": 4875.0,
+      "disponivel": 4875.0,
+      "dueDay": "dia 12",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "inter_celia",
+      "name": "INTER CELIA",
+      "limite": 8290.0,
+      "disponivel": 8290.0,
+      "dueDay": "dia 11",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "mercado_franks",
+      "name": "MERCADO FRANKS",
+      "limite": 9200.0,
+      "disponivel": 7482.72,
+      "dueDay": "dia 11",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "MERCADO FRANKS-1-19",
+            "linha": 19,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "15/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-1-20",
+            "linha": 20,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "15/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-1-21",
+            "linha": 21,
+            "data": "06/06/2026",
+            "descricao": "teclado horus",
+            "parcelas": "8/10",
+            "valor": 21.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-1-22",
+            "linha": 22,
+            "data": "06/06/2026",
+            "descricao": "teclado horus (Divisão)",
+            "parcelas": "8/10",
+            "valor": 21.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-1-23",
+            "linha": 23,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "7/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-1-24",
+            "linha": 24,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "4/4",
+            "valor": 23.63,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-1-25",
+            "linha": 25,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "4/4",
+            "valor": 20.23,
+            "pagador": "keythy"
+          },
+          {
+            "id": "MERCADO FRANKS-1-26",
+            "linha": 26,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "3/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-1-27",
+            "linha": 27,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "3/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-1-28",
+            "linha": 28,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento",
+            "parcelas": "3/3",
+            "valor": 39.99,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-1-29",
+            "linha": 29,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento (Divisão)",
+            "parcelas": "3/3",
+            "valor": 39.99,
+            "pagador": "contrução"
+          }
+        ],
+        "2": [
+          {
+            "id": "MERCADO FRANKS-2-19",
+            "linha": 19,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "16/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-2-20",
+            "linha": 20,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "16/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-2-21",
+            "linha": 21,
+            "data": "06/06/2026",
+            "descricao": "teclado horus",
+            "parcelas": "9/10",
+            "valor": 21.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-2-22",
+            "linha": 22,
+            "data": "06/06/2026",
+            "descricao": "teclado horus (Divisão)",
+            "parcelas": "9/10",
+            "valor": 21.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-2-23",
+            "linha": 23,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "8/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-2-24",
+            "linha": 24,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "4/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-2-25",
+            "linha": 25,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "4/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "MERCADO FRANKS-3-19",
+            "linha": 19,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "17/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-3-20",
+            "linha": 20,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "17/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-3-21",
+            "linha": 21,
+            "data": "06/06/2026",
+            "descricao": "teclado horus",
+            "parcelas": "10/10",
+            "valor": 21.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-3-22",
+            "linha": 22,
+            "data": "06/06/2026",
+            "descricao": "teclado horus (Divisão)",
+            "parcelas": "10/10",
+            "valor": 21.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-3-23",
+            "linha": 23,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "9/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-3-24",
+            "linha": 24,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "5/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-3-25",
+            "linha": 25,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "5/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "MERCADO FRANKS-4-19",
+            "linha": 19,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "18/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-4-20",
+            "linha": 20,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "18/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-4-21",
+            "linha": 21,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "10/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-4-22",
+            "linha": 22,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "6/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-4-23",
+            "linha": 23,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "6/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "MERCADO FRANKS-5-19",
+            "linha": 19,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "11/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-5-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "7/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-5-21",
+            "linha": 21,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "7/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [
+          {
+            "id": "MERCADO FRANKS-6-19",
+            "linha": 19,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "12/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-6-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "8/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-6-21",
+            "linha": 21,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "8/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "7": [
+          {
+            "id": "MERCADO FRANKS-7-43",
+            "linha": 43,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "9/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-7-44",
+            "linha": 44,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "9/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "8": [
+          {
+            "id": "MERCADO FRANKS-8-43",
+            "linha": 43,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "10/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-8-44",
+            "linha": 44,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "10/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          }
+        ],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "MERCADO FRANKS-11-43",
+            "linha": 43,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "13/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-11-44",
+            "linha": 44,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "13/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-11-45",
+            "linha": 45,
+            "data": "06/06/2026",
+            "descricao": "teclado horus",
+            "parcelas": "6/10",
+            "valor": 21.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-11-46",
+            "linha": 46,
+            "data": "06/06/2026",
+            "descricao": "teclado horus (Divisão)",
+            "parcelas": "6/10",
+            "valor": 21.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-11-47",
+            "linha": 47,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "5/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-11-48",
+            "linha": 48,
+            "data": "19/08/2026",
+            "descricao": "presente andresa/wesley",
+            "parcelas": "3/4",
+            "valor": 32.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-11-49",
+            "linha": 49,
+            "data": "19/08/2026",
+            "descricao": "presente andresa/wesley (Divisão)",
+            "parcelas": "3/4",
+            "valor": 32.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-11-50",
+            "linha": 50,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "2/4",
+            "valor": 23.63,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-11-51",
+            "linha": 51,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "2/4",
+            "valor": 20.23,
+            "pagador": "keythy"
+          },
+          {
+            "id": "MERCADO FRANKS-11-52",
+            "linha": 52,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "1/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-11-53",
+            "linha": 53,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "1/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-11-54",
+            "linha": 54,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento",
+            "parcelas": "1/3",
+            "valor": 39.99,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-11-55",
+            "linha": 55,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento (Divisão)",
+            "parcelas": "1/3",
+            "valor": 39.99,
+            "pagador": "contrução"
+          }
+        ],
+        "12": [
+          {
+            "id": "MERCADO FRANKS-12-43",
+            "linha": 43,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "14/18",
+            "valor": 30.67,
+            "pagador": "paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-12-44",
+            "linha": 44,
+            "data": "22/10/2025",
+            "descricao": "Monitor Samsung",
+            "parcelas": "14/18",
+            "valor": 30.67,
+            "pagador": "celia"
+          },
+          {
+            "id": "MERCADO FRANKS-12-45",
+            "linha": 45,
+            "data": "06/06/2026",
+            "descricao": "teclado horus",
+            "parcelas": "7/10",
+            "valor": 21.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-12-46",
+            "linha": 46,
+            "data": "06/06/2026",
+            "descricao": "teclado horus (Divisão)",
+            "parcelas": "7/10",
+            "valor": 21.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-12-47",
+            "linha": 47,
+            "data": "02/07/2026",
+            "descricao": "ventilador e roteador",
+            "parcelas": "6/12",
+            "valor": 38.38,
+            "pagador": "Escola"
+          },
+          {
+            "id": "MERCADO FRANKS-12-48",
+            "linha": 48,
+            "data": "19/08/2026",
+            "descricao": "presente andresa/wesley",
+            "parcelas": "4/4",
+            "valor": 32.62,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-12-49",
+            "linha": 49,
+            "data": "19/08/2026",
+            "descricao": "presente andresa/wesley (Divisão)",
+            "parcelas": "4/4",
+            "valor": 32.62,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-12-50",
+            "linha": 50,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "3/4",
+            "valor": 23.63,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-12-51",
+            "linha": 51,
+            "data": "09/10/2026",
+            "descricao": "camera/rolam. impr.",
+            "parcelas": "3/4",
+            "valor": 20.23,
+            "pagador": "keythy"
+          },
+          {
+            "id": "MERCADO FRANKS-12-52",
+            "linha": 52,
+            "data": "19/10/2026",
+            "descricao": "americanas",
+            "parcelas": "2/10",
+            "valor": 16.2,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-12-53",
+            "linha": 53,
+            "data": "19/10/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "2/10",
+            "valor": 16.2,
+            "pagador": "Celia"
+          },
+          {
+            "id": "MERCADO FRANKS-12-54",
+            "linha": 54,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento",
+            "parcelas": "2/3",
+            "valor": 39.99,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "MERCADO FRANKS-12-55",
+            "linha": 55,
+            "data": "19/10/2026",
+            "descricao": "vestido casamento (Divisão)",
+            "parcelas": "2/3",
+            "valor": 39.99,
+            "pagador": "contrução"
+          }
+        ]
+      }
+    },
+    {
+      "id": "iti",
+      "name": "ITI",
+      "limite": 7050.0,
+      "disponivel": 4741.69,
+      "dueDay": "dia 30",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "ITI-1-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "americanas",
+            "parcelas": "7/9",
+            "valor": 15.22,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-20",
+            "linha": 20,
+            "data": "10/06/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "7/9",
+            "valor": 15.22,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-21",
+            "linha": 21,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "6/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-22",
+            "linha": 22,
+            "data": "09/07/2026",
+            "descricao": "center doces",
+            "parcelas": "6/7",
+            "valor": 18.45,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-23",
+            "linha": 23,
+            "data": "09/07/2026",
+            "descricao": "center doces (Divisão)",
+            "parcelas": "6/7",
+            "valor": 18.45,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-24",
+            "linha": 24,
+            "data": "09/07/2026",
+            "descricao": "mundo dos cabelos",
+            "parcelas": "6/8",
+            "valor": 43.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-25",
+            "linha": 25,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "5/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-26",
+            "linha": 26,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "5/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-27",
+            "linha": 27,
+            "data": "05/08/2026",
+            "descricao": "presente de julia",
+            "parcelas": "5/5",
+            "valor": 15.29,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-28",
+            "linha": 28,
+            "data": "05/08/2026",
+            "descricao": "presente de julia (Divisão)",
+            "parcelas": "5/5",
+            "valor": 15.29,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-29",
+            "linha": 29,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "5/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-30",
+            "linha": 30,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "5/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-31",
+            "linha": 31,
+            "data": "05/09/2026",
+            "descricao": "anas burguer",
+            "parcelas": "4/4",
+            "valor": 16.55,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-1-32",
+            "linha": 32,
+            "data": "05/09/2026",
+            "descricao": "anas burguer (Divisão)",
+            "parcelas": "4/4",
+            "valor": 16.55,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-1-33",
+            "linha": 33,
+            "data": "07/09/2026",
+            "descricao": "temaki",
+            "parcelas": "4/4",
+            "valor": 22.46,
+            "pagador": "Paloma"
+          }
+        ],
+        "2": [
+          {
+            "id": "ITI-2-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "americanas",
+            "parcelas": "8/9",
+            "valor": 15.22,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-20",
+            "linha": 20,
+            "data": "10/06/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "8/9",
+            "valor": 15.22,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-2-21",
+            "linha": 21,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "7/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-22",
+            "linha": 22,
+            "data": "09/07/2026",
+            "descricao": "center doces",
+            "parcelas": "7/7",
+            "valor": 18.45,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-23",
+            "linha": 23,
+            "data": "09/07/2026",
+            "descricao": "center doces (Divisão)",
+            "parcelas": "7/7",
+            "valor": 18.45,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-2-24",
+            "linha": 24,
+            "data": "09/07/2026",
+            "descricao": "mundo dos cabelos",
+            "parcelas": "7/8",
+            "valor": 43.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-25",
+            "linha": 25,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "6/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-2-26",
+            "linha": 26,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "6/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-27",
+            "linha": 27,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "6/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-2-28",
+            "linha": 28,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "6/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "ITI-3-19",
+            "linha": 19,
+            "data": "10/06/2026",
+            "descricao": "americanas",
+            "parcelas": "9/9",
+            "valor": 15.22,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-3-20",
+            "linha": 20,
+            "data": "10/06/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "9/9",
+            "valor": 15.22,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-3-21",
+            "linha": 21,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "8/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-3-22",
+            "linha": 22,
+            "data": "09/07/2026",
+            "descricao": "mundo dos cabelos",
+            "parcelas": "8/8",
+            "valor": 43.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-3-23",
+            "linha": 23,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "7/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-3-24",
+            "linha": 24,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "7/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-3-25",
+            "linha": 25,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "7/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-3-26",
+            "linha": 26,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "7/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "ITI-4-19",
+            "linha": 19,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "9/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-4-20",
+            "linha": 20,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "8/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-4-21",
+            "linha": 21,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "8/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-4-22",
+            "linha": 22,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "8/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-4-23",
+            "linha": 23,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "8/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "ITI-5-19",
+            "linha": 19,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "10/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-5-20",
+            "linha": 20,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "9/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-5-21",
+            "linha": 21,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "9/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-5-22",
+            "linha": 22,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "9/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-5-23",
+            "linha": 23,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "9/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [
+          {
+            "id": "ITI-6-19",
+            "linha": 19,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "10/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-6-20",
+            "linha": 20,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "10/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          }
+        ],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [
+          {
+            "id": "ITI-10-46",
+            "linha": 46,
+            "data": "05/07/2026",
+            "descricao": "vitamina farmailha",
+            "parcelas": "3/3",
+            "valor": 39.33,
+            "pagador": "rosangela"
+          }
+        ],
+        "11": [
+          {
+            "id": "ITI-11-43",
+            "linha": 43,
+            "data": "10/06/2026",
+            "descricao": "americanas",
+            "parcelas": "5/9",
+            "valor": 15.22,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-44",
+            "linha": 44,
+            "data": "10/06/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "5/9",
+            "valor": 15.22,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-45",
+            "linha": 45,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "4/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-46",
+            "linha": 46,
+            "data": "09/07/2026",
+            "descricao": "center doces",
+            "parcelas": "4/7",
+            "valor": 18.45,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-47",
+            "linha": 47,
+            "data": "09/07/2026",
+            "descricao": "center doces (Divisão)",
+            "parcelas": "4/7",
+            "valor": 18.45,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-48",
+            "linha": 48,
+            "data": "09/07/2026",
+            "descricao": "mundo dos cabelos",
+            "parcelas": "4/8",
+            "valor": 43.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-49",
+            "linha": 49,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "3/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-50",
+            "linha": 50,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "3/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-51",
+            "linha": 51,
+            "data": "04/08/2026",
+            "descricao": "aliança",
+            "parcelas": "3/4",
+            "valor": 21.12,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-52",
+            "linha": 52,
+            "data": "04/08/2026",
+            "descricao": "aliança (Divisão)",
+            "parcelas": "3/4",
+            "valor": 21.12,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-53",
+            "linha": 53,
+            "data": "05/08/2026",
+            "descricao": "presente de julia",
+            "parcelas": "3/5",
+            "valor": 15.29,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-54",
+            "linha": 54,
+            "data": "05/08/2026",
+            "descricao": "presente de julia (Divisão)",
+            "parcelas": "3/5",
+            "valor": 15.29,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-55",
+            "linha": 55,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "3/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-56",
+            "linha": 56,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "3/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-57",
+            "linha": 57,
+            "data": "05/09/2026",
+            "descricao": "anas burguer",
+            "parcelas": "2/4",
+            "valor": 16.55,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-11-58",
+            "linha": 58,
+            "data": "05/09/2026",
+            "descricao": "anas burguer (Divisão)",
+            "parcelas": "2/4",
+            "valor": 16.55,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-11-59",
+            "linha": 59,
+            "data": "07/09/2026",
+            "descricao": "temaki",
+            "parcelas": "2/4",
+            "valor": 22.46,
+            "pagador": "Paloma"
+          }
+        ],
+        "12": [
+          {
+            "id": "ITI-12-43",
+            "linha": 43,
+            "data": "10/06/2026",
+            "descricao": "americanas",
+            "parcelas": "6/9",
+            "valor": 15.22,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-44",
+            "linha": 44,
+            "data": "10/06/2026",
+            "descricao": "americanas (Divisão)",
+            "parcelas": "6/9",
+            "valor": 15.22,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-45",
+            "linha": 45,
+            "data": "09/07/2026",
+            "descricao": "3Bs",
+            "parcelas": "5/10",
+            "valor": 39.96,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-46",
+            "linha": 46,
+            "data": "09/07/2026",
+            "descricao": "center doces",
+            "parcelas": "5/7",
+            "valor": 18.45,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-47",
+            "linha": 47,
+            "data": "09/07/2026",
+            "descricao": "center doces (Divisão)",
+            "parcelas": "5/7",
+            "valor": 18.45,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-48",
+            "linha": 48,
+            "data": "09/07/2026",
+            "descricao": "mundo dos cabelos",
+            "parcelas": "5/8",
+            "valor": 43.09,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-49",
+            "linha": 49,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro",
+            "parcelas": "4/10",
+            "valor": 42.5,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-50",
+            "linha": 50,
+            "data": "04/08/2026",
+            "descricao": "serviço do carro (Divisão)",
+            "parcelas": "4/10",
+            "valor": 42.5,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-51",
+            "linha": 51,
+            "data": "04/08/2026",
+            "descricao": "aliança",
+            "parcelas": "4/4",
+            "valor": 21.12,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-52",
+            "linha": 52,
+            "data": "04/08/2026",
+            "descricao": "aliança (Divisão)",
+            "parcelas": "4/4",
+            "valor": 21.12,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-53",
+            "linha": 53,
+            "data": "05/08/2026",
+            "descricao": "presente de julia",
+            "parcelas": "4/5",
+            "valor": 15.29,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-54",
+            "linha": 54,
+            "data": "05/08/2026",
+            "descricao": "presente de julia (Divisão)",
+            "parcelas": "4/5",
+            "valor": 15.29,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-55",
+            "linha": 55,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas",
+            "parcelas": "4/9",
+            "valor": 25.54,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-56",
+            "linha": 56,
+            "data": "11/08/2026",
+            "descricao": "tenis adidas (Divisão)",
+            "parcelas": "4/9",
+            "valor": 25.54,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-57",
+            "linha": 57,
+            "data": "05/09/2026",
+            "descricao": "anas burguer",
+            "parcelas": "3/4",
+            "valor": 16.55,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "ITI-12-58",
+            "linha": 58,
+            "data": "05/09/2026",
+            "descricao": "anas burguer (Divisão)",
+            "parcelas": "3/4",
+            "valor": 16.55,
+            "pagador": "Celia"
+          },
+          {
+            "id": "ITI-12-59",
+            "linha": 59,
+            "data": "07/09/2026",
+            "descricao": "temaki",
+            "parcelas": "3/4",
+            "valor": 22.46,
+            "pagador": "Paloma"
+          }
+        ]
+      }
+    },
+    {
+      "id": "brasil_franks",
+      "name": "BRASIL FRANKS",
+      "limite": 1100.0,
+      "disponivel": 1069.2,
+      "dueDay": "dia 14",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "riachuelo",
+      "name": "RIACHUELO",
+      "limite": 900.0,
+      "disponivel": 88.77999999999997,
+      "dueDay": "dia 14",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "RIACHUELO-1-19",
+            "linha": 19,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "3/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-1-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "3/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [
+          {
+            "id": "RIACHUELO-2-19",
+            "linha": 19,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "4/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-2-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "4/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "RIACHUELO-3-19",
+            "linha": 19,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "5/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-3-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "5/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "RIACHUELO-4-19",
+            "linha": 19,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "6/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-4-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "6/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "RIACHUELO-5-19",
+            "linha": 19,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "7/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-5-20",
+            "linha": 20,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "7/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "RIACHUELO-11-43",
+            "linha": 43,
+            "data": "01/08/2026",
+            "descricao": "roupas casamento",
+            "parcelas": "4/5",
+            "valor": 48.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-11-44",
+            "linha": 44,
+            "data": "01/08/2026",
+            "descricao": "roupas casamento (Divisão)",
+            "parcelas": "4/5",
+            "valor": 48.0,
+            "pagador": "Celia"
+          },
+          {
+            "id": "RIACHUELO-11-45",
+            "linha": 45,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "1/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-11-46",
+            "linha": 46,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "1/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "RIACHUELO-12-43",
+            "linha": 43,
+            "data": "01/08/2026",
+            "descricao": "roupas casamento",
+            "parcelas": "5/5",
+            "valor": 48.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-12-44",
+            "linha": 44,
+            "data": "01/08/2026",
+            "descricao": "roupas casamento (Divisão)",
+            "parcelas": "5/5",
+            "valor": 48.0,
+            "pagador": "Celia"
+          },
+          {
+            "id": "RIACHUELO-12-45",
+            "linha": 45,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol",
+            "parcelas": "2/7",
+            "valor": 44.23,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "RIACHUELO-12-46",
+            "linha": 46,
+            "data": "19/10/2026",
+            "descricao": "salto/camisa/lençol (Divisão)",
+            "parcelas": "2/7",
+            "valor": 44.23,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "neon_franks",
+      "name": "NEON FRANKS",
+      "limite": 3378.0,
+      "disponivel": 2939.6,
+      "dueDay": "dia 14",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "NEON FRANKS-1-19",
+            "linha": 19,
+            "data": "26/03/2026",
+            "descricao": "camisas sport",
+            "parcelas": "10/12",
+            "valor": 15.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NEON FRANKS-1-20",
+            "linha": 20,
+            "data": "26/03/2026",
+            "descricao": "camisas sport (Divisão)",
+            "parcelas": "10/12",
+            "valor": 15.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-1-21",
+            "linha": 21,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "7/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [
+          {
+            "id": "NEON FRANKS-2-19",
+            "linha": 19,
+            "data": "26/03/2026",
+            "descricao": "camisas sport",
+            "parcelas": "11/12",
+            "valor": 15.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NEON FRANKS-2-20",
+            "linha": 20,
+            "data": "26/03/2026",
+            "descricao": "camisas sport (Divisão)",
+            "parcelas": "11/12",
+            "valor": 15.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-2-21",
+            "linha": 21,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "8/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "NEON FRANKS-3-19",
+            "linha": 19,
+            "data": "26/03/2026",
+            "descricao": "camisas sport",
+            "parcelas": "12/12",
+            "valor": 15.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NEON FRANKS-3-20",
+            "linha": 20,
+            "data": "26/03/2026",
+            "descricao": "camisas sport (Divisão)",
+            "parcelas": "12/12",
+            "valor": 15.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-3-21",
+            "linha": 21,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "9/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "NEON FRANKS-4-19",
+            "linha": 19,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "10/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "NEON FRANKS-5-19",
+            "linha": 19,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "11/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [
+          {
+            "id": "NEON FRANKS-6-19",
+            "linha": 19,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "12/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "NEON FRANKS-11-43",
+            "linha": 43,
+            "data": "16/12/2025",
+            "descricao": "acessorios pc celia",
+            "parcelas": "12/12",
+            "valor": 29.56,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-11-44",
+            "linha": 44,
+            "data": "26/03/2026",
+            "descricao": "camisas sport",
+            "parcelas": "8/12",
+            "valor": 15.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NEON FRANKS-11-45",
+            "linha": 45,
+            "data": "26/03/2026",
+            "descricao": "camisas sport (Divisão)",
+            "parcelas": "8/12",
+            "valor": 15.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-11-46",
+            "linha": 46,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "5/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "NEON FRANKS-12-43",
+            "linha": 43,
+            "data": "26/03/2026",
+            "descricao": "camisas sport",
+            "parcelas": "9/12",
+            "valor": 15.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "NEON FRANKS-12-44",
+            "linha": 44,
+            "data": "26/03/2026",
+            "descricao": "camisas sport (Divisão)",
+            "parcelas": "9/12",
+            "valor": 15.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "NEON FRANKS-12-45",
+            "linha": 45,
+            "data": "05/07/2026",
+            "descricao": "camisa sport amarela",
+            "parcelas": "6/12",
+            "valor": 11.38,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "picpay",
+      "name": "PICPAY",
+      "limite": 7950.0,
+      "disponivel": 7750.96,
+      "dueDay": "dia 13",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [
+          {
+            "id": "PICPAY-11-43",
+            "linha": 43,
+            "data": "23/06/2026",
+            "descricao": "ar-condicionado",
+            "parcelas": "5/6",
+            "valor": 99.52,
+            "pagador": "Escola"
+          }
+        ],
+        "12": [
+          {
+            "id": "PICPAY-12-43",
+            "linha": 43,
+            "data": "23/06/2026",
+            "descricao": "ar-condicionado",
+            "parcelas": "6/6",
+            "valor": 99.52,
+            "pagador": "Escola"
+          }
+        ]
+      }
+    },
+    {
+      "id": "caixa",
+      "name": "CAIXA",
+      "limite": 1385.0,
+      "disponivel": 1374.5,
+      "dueDay": "",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [],
+        "11": [],
+        "12": []
+      }
+    },
+    {
+      "id": "outros",
+      "name": "OUTROS",
+      "limite": 0.0,
+      "disponivel": -613.14,
+      "dueDay": "dia 13",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "OUTROS-1-19",
+            "linha": 19,
+            "data": "10/05/2026",
+            "descricao": "igreja",
+            "parcelas": "18.774999999999999",
+            "valor": 20.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS-1-20",
+            "linha": 20,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "6/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "2": [
+          {
+            "id": "OUTROS-2-19",
+            "linha": 19,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "7/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "3": [
+          {
+            "id": "OUTROS-3-19",
+            "linha": 19,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "8/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "4": [
+          {
+            "id": "OUTROS-4-19",
+            "linha": 19,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "9/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "5": [
+          {
+            "id": "OUTROS-5-19",
+            "linha": 19,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "10/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "6": [
+          {
+            "id": "OUTROS-6-19",
+            "linha": 19,
+            "data": "07/01/2026",
+            "descricao": "ipva",
+            "parcelas": "5/8",
+            "valor": 0.0,
+            "pagador": "Celia"
+          },
+          {
+            "id": "OUTROS-6-23",
+            "linha": 23,
+            "data": "",
+            "descricao": "lanche",
+            "parcelas": "",
+            "valor": 0.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [
+          {
+            "id": "OUTROS-10-48",
+            "linha": 48,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "3/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "11": [
+          {
+            "id": "OUTROS-11-43",
+            "linha": 43,
+            "data": "10/05/2026",
+            "descricao": "igreja",
+            "parcelas": "6/8",
+            "valor": 18.775,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS-11-44",
+            "linha": 44,
+            "data": "05/05/2026",
+            "descricao": "esposende jamily",
+            "parcelas": "5/5",
+            "valor": 29.8,
+            "pagador": "Celia"
+          },
+          {
+            "id": "OUTROS-11-45",
+            "linha": 45,
+            "data": "05/05/2026",
+            "descricao": "esposende jamily (Divisão)",
+            "parcelas": "5/5",
+            "valor": 29.8,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS-11-48",
+            "linha": 48,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "4/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ],
+        "12": [
+          {
+            "id": "OUTROS-12-43",
+            "linha": 43,
+            "data": "10/05/2026",
+            "descricao": "igreja",
+            "parcelas": "7/8",
+            "valor": 18.775,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS-12-44",
+            "linha": 44,
+            "data": "",
+            "descricao": "recarga credito",
+            "parcelas": "",
+            "valor": 59.0,
+            "pagador": "paloma"
+          },
+          {
+            "id": "OUTROS-12-47",
+            "linha": 47,
+            "data": "13/07/2026",
+            "descricao": "oculos",
+            "parcelas": "5/10",
+            "valor": 40.0,
+            "pagador": "Celia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outros_quinzena",
+      "name": "OUTROS QUINZENA",
+      "limite": 0.0,
+      "disponivel": -564.0,
+      "dueDay": "dia 15",
+      "finalCard": "FINAL DO CARTÃO",
+      "isFisico": "FISICO",
+      "isVirtual": "VIRTUAL",
+      "months": {
+        "1": [
+          {
+            "id": "OUTROS QUINZENA-1-19",
+            "linha": 19,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-1-20",
+            "linha": 20,
+            "data": "01/08/2026",
+            "descricao": "C&A",
+            "parcelas": "5/5",
+            "valor": 45.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-1-21",
+            "linha": 21,
+            "data": "",
+            "descricao": "unha",
+            "parcelas": "",
+            "valor": 40.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "2": [
+          {
+            "id": "OUTROS QUINZENA-2-19",
+            "linha": 19,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-2-20",
+            "linha": 20,
+            "data": "",
+            "descricao": "unha",
+            "parcelas": "",
+            "valor": 40.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "3": [
+          {
+            "id": "OUTROS QUINZENA-3-19",
+            "linha": 19,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "4": [
+          {
+            "id": "OUTROS QUINZENA-4-19",
+            "linha": 19,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": [],
+        "10": [
+          {
+            "id": "OUTROS QUINZENA-10-44",
+            "linha": 44,
+            "data": "",
+            "descricao": "unha",
+            "parcelas": "",
+            "valor": 40.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-10-45",
+            "linha": 45,
+            "data": "01/08/2026",
+            "descricao": "C&A",
+            "parcelas": "2/5",
+            "valor": 45.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "11": [
+          {
+            "id": "OUTROS QUINZENA-11-43",
+            "linha": 43,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-11-44",
+            "linha": 44,
+            "data": "01/08/2026",
+            "descricao": "C&A",
+            "parcelas": "3/5",
+            "valor": 45.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-11-45",
+            "linha": 45,
+            "data": "",
+            "descricao": "unha",
+            "parcelas": "",
+            "valor": 40.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-11-46",
+            "linha": 46,
+            "data": "",
+            "descricao": "repor iti",
+            "parcelas": "1/2",
+            "valor": 50.0,
+            "pagador": "Paloma"
+          }
+        ],
+        "12": [
+          {
+            "id": "OUTROS QUINZENA-12-43",
+            "linha": 43,
+            "data": "",
+            "descricao": "youcine",
+            "parcelas": "",
+            "valor": 14.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-12-44",
+            "linha": 44,
+            "data": "01/08/2026",
+            "descricao": "C&A",
+            "parcelas": "4/5",
+            "valor": 45.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-12-45",
+            "linha": 45,
+            "data": "",
+            "descricao": "unha",
+            "parcelas": "",
+            "valor": 40.0,
+            "pagador": "Paloma"
+          },
+          {
+            "id": "OUTROS QUINZENA-12-46",
+            "linha": 46,
+            "data": "",
+            "descricao": "repor iti",
+            "parcelas": "2/2",
+            "valor": 50.0,
+            "pagador": "Paloma"
+          }
+        ]
+      }
+    }
+  ],
+  "cardsList": [
+    "Nubank Celia",
+    "Caixa 2",
+    "Brasil Celia",
+    "Iti",
+    "Magalu",
+    "Inter Franks",
+    "Neon Celia",
+    "Nubank Franks",
+    "Mercado Celia",
+    "FortBrasil",
+    "Inter Celia",
+    "Mercado Franks",
+    "Brasil Franks",
+    "Riachuelo",
+    "Neon Franks",
+    "PicPay",
+    "Caixa",
+    "Outros",
+    "Outros Quinzena"
+  ],
+  "persons": [
+    "Paloma",
+    "Celia",
+    "Escola",
+    "Rosangela",
+    "keythy",
+    "Gabi",
+    "stefane",
+    "Wesley"
+  ],
+  "simulator": {
+    "mensalCards": [
+      "FortBrasil",
+      "iti",
+      "Magalu",
+      "Neon Celia",
+      "Mercado Celia",
+      "Inter Celia",
+      "Inter Franks",
+      "Outros",
+      "nubank franks",
+      "brasil celia",
+      "nubank celia",
+      "Energia"
+    ],
+    "quinzenaCards": [
+      "Mercado Franks",
+      "Brasil Franks",
+      "Caixa",
+      "neon franks",
+      "outros quinzena",
+      "riachuelo",
+      "picpay",
+      "caixa 2",
+      "Energia"
+    ],
+    "rec1": 1200.0,
+    "rec2": 700.0,
+    "energiaValor": 50.0
+  }
+}

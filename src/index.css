@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --theme-bg: #071326;
+  --theme-panel: #0f172a;
+  --theme-panel-subtle: #142036;
+  --theme-border: rgba(148, 163, 184, 0.16);
+  --theme-accent: #38bdf8;
+  --theme-accent-text: #000000;
+  --theme-text: #f8fafc;
+  --theme-text-muted: #94a3b8;
+  --theme-text-subtle: #64748b;
+  --theme-input-bg: rgba(0, 0, 0, 0.28);
+  --theme-input-border: rgba(148, 163, 184, 0.22);
+}
+
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* ========================================================================= */
+/* SISTEMA GLOBAL DE TEMAS E CORES INDEPENDENTES                             */
+/* ========================================================================= */
+
+.theme-app-container {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+/* 1. PAINÉIS, CARDS E CAIXAS */
+.theme-app-container header,
+.theme-app-container .bg-\[\#111625\],
+.theme-app-container .bg-\[\#0d1b2a\],
+.theme-app-container .bg-slate-850,
+.theme-app-container .bg-slate-900:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/95:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/90:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/80:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/70:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/60:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-900\/50:not([style*="background"]):not([style*="background-color"]) {
+  background-color: var(--theme-panel) !important;
+}
+
+/* 2. SUB-PAINÉIS, CARDS ANINHADOS E CABEÇALHOS DE TABELAS */
+.theme-app-container .bg-\[\#162032\],
+.theme-app-container .bg-\[\#0c1220\],
+.theme-app-container .bg-\[\#141c2e\],
+.theme-app-container .bg-\[\#172033\],
+.theme-app-container .bg-\[\#151c2e\],
+.theme-app-container .bg-\[\#0d1320\],
+.theme-app-container .bg-\[\#1a253d\],
+.theme-app-container .bg-\[\#1f2d45\],
+.theme-app-container .bg-\[\#1f1f23\],
+.theme-app-container .bg-\[\#0a0f1d\],
+.theme-app-container .bg-\[\#1c2a42\],
+.theme-app-container .bg-slate-950:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-950\/90:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-950\/80:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-950\/60:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-950\/50:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-950\/40:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800\/90:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800\/80:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800\/60:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800\/50:not([style*="background"]):not([style*="background-color"]),
+.theme-app-container .bg-slate-800\/40:not([style*="background"]):not([style*="background-color"]) {
+  background-color: var(--theme-panel-subtle) !important;
+}
+
+/* 3. BORDAS E DIVISORES */
+.theme-app-container .border-slate-800,
+.theme-app-container .border-slate-800\/80,
+.theme-app-container .border-slate-800\/60,
+.theme-app-container .border-slate-800\/50,
+.theme-app-container .border-slate-700,
+.theme-app-container .border-slate-700\/80,
+.theme-app-container .border-slate-700\/60,
+.theme-app-container .border-slate-700\/50,
+.theme-app-container .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+.theme-app-container .divide-slate-700 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--theme-border) !important;
+}
+
+/* 4. LETRAS E TEXTOS PRINCIPAIS (TÍTULOS, CABEÇALHOS, VALORES) */
+.theme-app-container .text-white:not([style*="color"]),
+.theme-app-container .text-slate-100:not([style*="color"]),
+.theme-app-container .text-slate-200:not([style*="color"]) {
+  color: var(--theme-text) !important;
+}
+
+/* 5. LEGENDAS E TEXTOS SECUNDÁRIOS */
+.theme-app-container .text-slate-300:not([style*="color"]) {
+  color: var(--theme-text) !important;
+  opacity: 0.90;
+}
+
+.theme-app-container .text-slate-400:not([style*="color"]) {
+  color: var(--theme-text-muted) !important;
+}
+
+.theme-app-container .text-slate-500:not([style*="color"]),
+.theme-app-container .text-slate-600:not([style*="color"]) {
+  color: var(--theme-text-subtle) !important;
+}
+
+.theme-app-container label {
+  color: var(--theme-text) !important;
+}
+
+/* 6. INPUTS, SELECTS E TEXTAREAS */
+.theme-app-container input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]),
+.theme-app-container select,
+.theme-app-container textarea {
+  background-color: var(--theme-input-bg) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-input-border) !important;
+}
+
+.theme-app-container option {
+  background-color: var(--theme-panel);
+  color: var(--theme-text);
+}
+
+.theme-app-container input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):focus,
+.theme-app-container select:focus,
+.theme-app-container textarea:focus {
+  border-color: var(--theme-accent) !important;
+  box-shadow: 0 0 0 1px var(--theme-accent);
+}
+
+.theme-app-container input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"])::placeholder,
+.theme-app-container textarea::placeholder {
+  color: var(--theme-text-muted) !important;
+  opacity: 0.65;
+}
+
+/* 7. TABELAS E CÉLULAS */
+.theme-app-container table th {
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+}
+
+.theme-app-container table td {
+  border-color: var(--theme-border) !important;
+}
+
+.theme-app-container tr.hover\:bg-slate-800\/50:hover,
+.theme-app-container tr.hover\:bg-slate-800\/60:hover,
+.theme-app-container tr.hover\:bg-slate-800\/80:hover,
+.theme-app-container tr.hover\:bg-slate-800:hover,
+.theme-app-container tr.hover\:bg-slate-700:hover,
+.theme-app-container tr.hover\:bg-slate-700\/50:hover {
+  background-color: var(--theme-panel-subtle) !important;
+  filter: brightness(1.12);
+}
+
+/* 8. NAVEGAÇÃO E CABEÇALHO */
+.theme-app-container header {
+  border-bottom-color: var(--theme-border) !important;
+}
+
+.theme-app-container nav {
+  border-top-color: var(--theme-border) !important;
+}
+
+/* 9. PRESERVAÇÃO EXPLÍCITA DE CORES SEMÂNTICAS */
+/* Alertas, Pagamentos, Atrasos, Status e Destaques */
+.text-emerald-300, .text-emerald-400, .text-emerald-500,
+.text-green-300, .text-green-400, .text-green-500,
+.text-rose-300, .text-rose-400, .text-rose-500,
+.text-red-300, .text-red-400, .text-red-500,
+.text-amber-300, .text-amber-400, .text-amber-500,
+.text-yellow-300, .text-yellow-400, .text-yellow-500,
+.text-sky-400, .text-purple-400, .text-cyan-400, .text-fuchsia-400,
+.text-teal-400, .text-orange-400 {
+  /* Mantém a cor semântica do tailwind sem ser sobreposta */
+}
