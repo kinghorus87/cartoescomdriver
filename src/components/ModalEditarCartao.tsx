@@ -64,7 +64,7 @@ export const ModalEditarCartao: React.FC<ModalEditarCartaoProps> = ({
       setDueDay(dayNum || card.dueDay || '');
       setShowDayPicker(false);
       setExibirIdentificacao(card.exibirIdentificacao !== false);
-      setFinalFisico(extractCardFinalDigits(card.isFisico || card.finalCard || ''));
+      setFinalFisico(extractCardFinalDigits(card.isFisico || ''));
       setFinalVirtual(extractCardFinalDigits(card.isVirtual || ''));
       setColor(getCardColor(card));
       setCustomImage(card.customImage || '');
@@ -162,14 +162,13 @@ export const ModalEditarCartao: React.FC<ModalEditarCartaoProps> = ({
     const formattedDueDay = `dia ${String(dayInt).padStart(2, '0')}`;
     const cleanFisico = finalFisico.replace(/\D/g, '').slice(-4);
     const cleanVirtual = finalVirtual.replace(/\D/g, '').slice(-4);
-    const mainFinal = cleanFisico || cleanVirtual;
 
     const result = onSave({
       id: card.id,
       name: trimmedName,
       limite: parsedLimite,
       dueDay: formattedDueDay,
-      finalCard: mainFinal ? `FINAL ${mainFinal}` : '',
+      finalCard: cleanFisico ? `FINAL ${cleanFisico}` : '',
       isFisico: cleanFisico ? `FISICO ${cleanFisico}` : '',
       isVirtual: cleanVirtual ? `VIRTUAL ${cleanVirtual}` : '',
       color: color || '#38bdf8',

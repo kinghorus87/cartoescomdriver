@@ -9,6 +9,7 @@ import {
   Table,
   Settings,
   LogOut,
+  Wrench,
 } from 'lucide-react';
 import { isDarkAccent } from '../utils/cardColors';
 
@@ -24,6 +25,8 @@ interface HeaderProps {
   customHeaderTitle?: string;
   customTabNames?: CustomTabNames;
   onRequestExit?: () => void;
+  reallocationCount?: number;
+  onOpenCorrecaoParcelas?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -38,6 +41,8 @@ export const Header: React.FC<HeaderProps> = ({
   customHeaderTitle,
   customTabNames,
   onRequestExit,
+  reallocationCount = 0,
+  onOpenCorrecaoParcelas,
 }) => {
   const isAccentDark = isDarkAccent(accentColor);
   const activeTabTextColor = isAccentDark ? '#ffffff' : accentColor;
@@ -98,7 +103,22 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Botão de Atalho para Configurações no canto direito */}
-          <div className="absolute right-0 flex items-center gap-1">
+          <div className="absolute right-0 flex items-center gap-1.5">
+            {reallocationCount > 0 && onOpenCorrecaoParcelas && (
+              <button
+                type="button"
+                onClick={onOpenCorrecaoParcelas}
+                title={`Existem ${reallocationCount} parcelas para realocar de 2026 para 2027+`}
+                className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm"
+              >
+                <Wrench className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden md:inline">Realocar</span>
+                <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 text-[10px] font-extrabold">
+                  {reallocationCount}
+                </span>
+              </button>
+            )}
+
             <button
               onClick={() => onTabChange('configuracoes')}
               title="Abrir Configurações e Gestão Local"

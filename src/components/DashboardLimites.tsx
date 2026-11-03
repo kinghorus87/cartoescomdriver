@@ -630,7 +630,7 @@ export const DashboardLimites: React.FC<DashboardLimitesProps> = ({
                         </div>
                       )}
 
-                      {card.exibirIdentificacao !== false && extractCardFinalDigits(card.finalCard || card.isFisico || card.isVirtual) ? (
+                      {card.exibirIdentificacao !== false && extractCardFinalDigits(card.isFisico || card.isVirtual) ? (
                         <div className="flex justify-between items-center text-[11px] pt-0.5">
                           <span className="font-medium" style={{ color: cardTextColor, opacity: 0.8 }}>
                             Identificação:
@@ -639,7 +639,7 @@ export const DashboardLimites: React.FC<DashboardLimitesProps> = ({
                             className="font-mono text-[10px] font-bold tracking-wider px-1.5 py-0.2 rounded bg-black/25 border border-white/20 shadow-xs"
                             style={{ color: cardTextColor }}
                           >
-                            •••• {extractCardFinalDigits(card.finalCard || card.isFisico || card.isVirtual)}
+                            •••• {extractCardFinalDigits(card.isFisico || card.isVirtual)}
                           </span>
                         </div>
                       ) : null}

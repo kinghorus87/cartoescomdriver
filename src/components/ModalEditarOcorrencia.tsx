@@ -295,10 +295,10 @@ export const ModalEditarOcorrencia: React.FC<ModalEditarOcorrenciaProps> = ({
               />
               <div className="space-y-0.5">
                 <span className="font-bold text-xs block text-slate-100">
-                  Opção B — Alterar esta ocorrência e todos os meses futuros
+                  Opção B — Alterar todas as ocorrências
                 </span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Altera a ocorrência deste mês e sincroniza todas as parcelas subsequentes. Se a quantidade total for aumentada, gera as parcelas faltantes nos meses seguintes. Se for diminuída, remove parcelas futuras excedentes. Não altera meses anteriores.
+                  Esta parcela recebe o número informado e as parcelas seguintes são renumeradas em sequência (as anteriores mantêm a numeração). Valor, descrição e pagador são atualizados em todas as parcelas, preservando meses, datas originais e estados de pagamento. Parcelas que passarem do total ficam guardadas e reaparecem se o total aumentar. Todos os outros lançamentos continuam intactos.
                 </p>
               </div>
             </label>
@@ -308,7 +308,7 @@ export const ModalEditarOcorrencia: React.FC<ModalEditarOcorrenciaProps> = ({
               <div className="p-2.5 bg-amber-500/15 border border-amber-500/30 rounded-lg text-amber-300 text-[11px] flex items-start gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
                 <span>
-                  <strong>Aviso de exclusão futura:</strong> O total foi reduzido de {initialParsed.tot} para {totalParcelas}. As parcelas excedentes além de {totalParcelas} nos meses seguintes serão removidas com segurança ao salvar.
+                  <strong>Aviso de redução:</strong> O total foi reduzido de {initialParsed.tot} para {totalParcelas}. As parcelas excedentes além de {totalParcelas} deixarão de aparecer, mas ficam guardadas e voltam se o total for aumentado novamente.
                 </span>
               </div>
             )}
@@ -317,7 +317,7 @@ export const ModalEditarOcorrencia: React.FC<ModalEditarOcorrenciaProps> = ({
               <div className="p-2.5 bg-emerald-500/15 border border-emerald-500/30 rounded-lg text-emerald-300 text-[11px] flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-emerald-400" />
                 <span>
-                  <strong>Expansão de parcelas:</strong> O total foi ampliado de {initialParsed.tot} para {totalParcelas}. Serão geradas automaticamente as parcelas faltantes ({parcelaAtual + 1} até {totalParcelas}) nos meses seguintes, inclusive através da virada de ano.
+                  <strong>Expansão de parcelas:</strong> O total foi ampliado de {initialParsed.tot} para {totalParcelas}. Parcelas guardadas serão recuperadas e as que ainda faltarem serão geradas automaticamente nos meses seguintes, inclusive através da virada de ano.
                 </span>
               </div>
             )}

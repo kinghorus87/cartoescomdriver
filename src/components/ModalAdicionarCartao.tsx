@@ -166,7 +166,6 @@ export const ModalAdicionarCartao: React.FC<ModalAdicionarCartaoProps> = ({
 
     const cleanFisico = finalFisico.replace(/\D/g, '').slice(-4);
     const cleanVirtual = finalVirtual.replace(/\D/g, '').slice(-4);
-    const mainFinal = cleanFisico || cleanVirtual;
 
     const result = onAddCard({
       name: cleanName,
@@ -174,7 +173,7 @@ export const ModalAdicionarCartao: React.FC<ModalAdicionarCartaoProps> = ({
       dueDay: `dia ${String(numDay).padStart(2, '0')}`,
       color: color || '#38bdf8',
       customImage: customImage.trim() || undefined,
-      finalCard: mainFinal ? `FINAL ${mainFinal}` : '',
+      finalCard: cleanFisico ? `FINAL ${cleanFisico}` : '',
       isFisico: cleanFisico ? `FISICO ${cleanFisico}` : '',
       isVirtual: cleanVirtual ? `VIRTUAL ${cleanVirtual}` : '',
       exibirIdentificacao,

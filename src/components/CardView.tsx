@@ -532,7 +532,7 @@ export const CardView: React.FC<CardViewProps> = ({
               name={currentCard.name}
               color={getCardColor(currentCard)}
               textColor={currentCard.textColor}
-              finalDigits={extractCardFinalDigits(currentCard.finalCard || currentCard.isFisico)}
+              finalDigits={extractCardFinalDigits(currentCard.isFisico || currentCard.isVirtual)}
               customImage={currentCard.customImage}
               showOverlayHover={true}
               overlayText={currentCard.customImage ? 'Trocar Foto' : 'Adicionar Foto'}
@@ -737,7 +737,7 @@ export const CardView: React.FC<CardViewProps> = ({
               </div>
 
               {(() => {
-                const fisicoDigits = extractCardFinalDigits(currentCard.isFisico || currentCard.finalCard);
+                const fisicoDigits = extractCardFinalDigits(currentCard.isFisico);
                 const virtualDigits = extractCardFinalDigits(currentCard.isVirtual);
                 const shouldShowIdentification = currentCard.exibirIdentificacao !== false && (Boolean(fisicoDigits) || Boolean(virtualDigits));
 
@@ -1662,8 +1662,8 @@ export const CardView: React.FC<CardViewProps> = ({
         onSaveOccurrence={(updatedTx) => {
           if (txToEditSingle && onEditOccurrence) {
             onEditOccurrence(currentCard.id, txToEditSingle.monthKey, updatedTx);
-            if (updatedTx.scope === 'this_and_future') {
-              showToast(`Lançamento "${updatedTx.descricao}" e parcelas futuras atualizadas com sucesso!`, 'success');
+            if (updatedTx.scope !== 'only_this') {
+              showToast(`Lançamento "${updatedTx.descricao}" e todas as ocorrências atualizadas com sucesso!`, 'success');
             } else {
               showToast(`Lançamento "${updatedTx.descricao}" atualizado com sucesso nesta fatura.`, 'success');
             }

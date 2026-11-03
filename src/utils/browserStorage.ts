@@ -3,6 +3,7 @@ import {
   getInitialData as getLocalStorageData,
   saveAppData as saveLocalStorageData,
   getEmptySeedData,
+  getDefaultSeedData,
 } from './storage';
 
 const DATABASE_NAME = 'cartoes-browser-files-v1';
@@ -299,6 +300,12 @@ export async function saveAppData(data: SeedData): Promise<{ success: boolean; e
 }
 
 export async function resetToOriginalData(): Promise<SeedData> {
+  const fresh = getDefaultSeedData();
+  await saveAppData(fresh);
+  return fresh;
+}
+
+export async function resetToEmptyData(): Promise<SeedData> {
   const fresh = getEmptySeedData();
   await saveAppData(fresh);
   return fresh;

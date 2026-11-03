@@ -48,6 +48,10 @@ import { ModalAdicionarCartao } from './components/ModalAdicionarCartao';
 import { ModalConfirmacao } from './components/ModalConfirmacao';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ConfiguracoesView } from './components/ConfiguracoesView';
+import { ModalCorrecaoParcelas } from './components/ModalCorrecaoParcelas';
+import { analyzeReallocation } from './utils/reallocateInstallments';
+import { applyAllOccurrencesEdit, resolvePurchaseId } from './utils/editInstallments';
+import { Wrench } from 'lucide-react';
 
 export default function App() {
   // Abertura direta: sem tela de login, sem usuário e senha, 100% local
@@ -59,6 +63,7 @@ export default function App() {
   const [isSessionClosed, setIsSessionClosed] = useState(false);
   const [isExitActionBusy, setIsExitActionBusy] = useState(false);
   const [exitActionError, setExitActionError] = useState<string | null>(null);
+  const [isCorrecaoModalOpen, setIsCorrecaoModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<ViewTab>('limites');
   const [isMiniSimPinned, setIsMiniSimPinned] = useState<boolean>(() => {
     try {
@@ -250,33 +255,59 @@ export default function App() {
     descricao: string;
     valorParcela: number;
     totalParcelas: number;
+    parcelaInicial?: number;
     mesInicial: string;
     pagador1: string;
     dividir: boolean;
     pagador2?: string;
   }) => {
     const purchaseId = `pur-${Date.now()}`;
-    const valorTotalCompra = Math.round(params.valorParcela * params.totalParcelas * 100) / 100;
+    const startInstallment = Math.max(
+      1,
+      Math.min(params.totalParcelas, params.parcelaInicial || 1)
+    );
+    const totalRemaining = params.totalParcelas - startInstallment + 1;
+    const valorTotalLancar = Math.round(params.valorParcela * totalRemaining * 100) / 100;
 
     const updatedCards = data.cards.map((card) => {
       if (card.name.toLowerCase() !== params.cartaoNome.toLowerCase()) {
         return card;
       }
 
-      const updatedMonths = { ...card.months };
-      const valorTotal = valorTotalCompra;
+      const updatedMonths: Record<string, Transaction[]> = { ...card.months };
+
+      const getWorkingTxs = (mKey: string): Transaction[] => {
+        const { key: norm, year, month } = parseMonthKey(mKey);
+        if (updatedMonths[norm] !== undefined) {
+          return updatedMonths[norm];
+        }
+        if (year === 2026 && updatedMonths[String(month)] !== undefined) {
+          return updatedMonths[String(month)];
+        }
+        return getCardTransactions(card, norm);
+      };
+
+      const setWorkingTxs = (mKey: string, txs: Transaction[]) => {
+        const { key: norm, year, month } = parseMonthKey(mKey);
+        updatedMonths[norm] = txs;
+        if (year === 2026) {
+          updatedMonths[String(month)] = txs;
+        }
+      };
+
       const valorDividido = params.dividir
-        ? Math.round((valorTotal / 2 / params.totalParcelas) * 100) / 100
+        ? Math.round((params.valorParcela / 2) * 100) / 100
         : params.valorParcela;
 
-      for (let i = 1; i <= params.totalParcelas; i++) {
-        const mesPara = addMonths(params.mesInicial, i - 1);
+      for (let i = startInstallment; i <= params.totalParcelas; i++) {
+        const offset = i - startInstallment;
+        const mesPara = addMonths(params.mesInicial, offset);
         if (!isMonthInRollingWindow(mesPara)) {
           // Não lança parcelas em meses futuros antes de a janela avançar
           continue;
         }
-        const { year, month: mNum } = parseMonthKey(mesPara);
-        const currentTxs = [...getCardTransactions(card, mesPara)];
+
+        const currentTxs = [...getWorkingTxs(mesPara)];
         const parcelaTexto = `${i}/${params.totalParcelas}`;
 
         currentTxs.push({
@@ -301,23 +332,13 @@ export default function App() {
           });
         }
 
-        updatedMonths[mesPara] = currentTxs;
-        if (year === 2026) {
-          updatedMonths[String(mNum)] = currentTxs;
-        }
+        setWorkingTxs(mesPara, currentTxs);
       }
 
-      for (let m = 1; m <= 12; m++) {
-        const mKey = `2026-${String(m).padStart(2, '0')}`;
-        if (updatedMonths[mKey]) {
-          updatedMonths[String(m)] = updatedMonths[mKey];
-        }
-      }
-
-      // Reduz o limite disponível pelo valor total contratado da compra
+      // Reduz o limite disponível pelo valor total das parcelas que foram lançadas
       const newDisponivel = Math.max(
         0,
-        Math.round((card.disponivel - valorTotal) * 100) / 100
+        Math.round((card.disponivel - valorTotalLancar) * 100) / 100
       );
 
       return {
@@ -519,10 +540,20 @@ export default function App() {
           Math.round((c.disponivel + totalRemovedValue) * 100) / 100
         );
 
+        // Parcelas guardadas (retiradas da sequência) da mesma compra também são excluídas,
+        // para não reaparecerem depois de a compra ser apagada
+        const deletedPurchaseId = resolvePurchaseId(c, targetTx);
+        const keptArchived = deletedPurchaseId && c.archivedInstallments
+          ? c.archivedInstallments.filter(
+              (a) => !(a.tx.purchaseId === deletedPurchaseId && diffMonths(fromMonthKey, a.monthKey) >= 0)
+            )
+          : c.archivedInstallments;
+
         return {
           ...c,
           disponivel: newDisponivel,
           months: updatedMonths,
+          ...(keptArchived !== c.archivedInstallments ? { archivedInstallments: keptArchived } : {}),
         };
       }),
     }));
@@ -1156,7 +1187,7 @@ export default function App() {
       pagador: string;
       parcelaAtual: number;
       totalParcelas: number;
-      scope: 'only_this' | 'this_and_future';
+      scope: 'only_this' | 'this_and_future' | 'all_occurrences';
     }
   ) => {
     const { key: normKey, year, month: mNum } = parseMonthKey(monthKey);
@@ -1173,10 +1204,32 @@ export default function App() {
 
         const oldVal = existingTx.valor || 0;
 
+        const updatedMonths: Record<string, Transaction[]> = { ...c.months };
+
+        const getWorkingTxs = (mKey: string): Transaction[] => {
+          const { key: norm, year: y, month: m } = parseMonthKey(mKey);
+          if (updatedMonths[norm] !== undefined) {
+            return updatedMonths[norm];
+          }
+          if (y === 2026 && updatedMonths[String(m)] !== undefined) {
+            return updatedMonths[String(m)];
+          }
+          return getCardTransactions(c, norm);
+        };
+
+        const setWorkingTxs = (mKey: string, txs: Transaction[]) => {
+          const { key: norm, year: y, month: m } = parseMonthKey(mKey);
+          updatedMonths[norm] = txs;
+          if (y === 2026) {
+            updatedMonths[String(m)] = txs;
+          }
+        };
+
         // OPÇÃO A: altera somente esta ocorrência do mês selecionado
         if (updatedTx.scope === 'only_this') {
           const diffVal = oldVal - updatedTx.valor;
-          const updatedTxs = currentTxs.map((t) => {
+          const curTxs = getWorkingTxs(normKey);
+          const updatedCurTxs = curTxs.map((t) => {
             if (t.id !== updatedTx.id) return t;
             return {
               ...t,
@@ -1188,16 +1241,12 @@ export default function App() {
             };
           });
 
-          const updatedMonths = {
-            ...c.months,
-            [normKey]: updatedTxs,
-          };
+          setWorkingTxs(normKey, updatedCurTxs);
 
-          if (year === 2026) {
-            updatedMonths[String(mNum)] = updatedTxs;
-          }
-
-          const newDisponivel = Math.round((c.disponivel + diffVal) * 100) / 100;
+          const newDisponivel = Math.min(
+            c.limite,
+            Math.max(0, Math.round((c.disponivel + diffVal) * 100) / 100)
+          );
 
           return {
             ...c,
@@ -1206,123 +1255,17 @@ export default function App() {
           };
         }
 
-        // OPÇÃO B: altera esta ocorrência e todos os meses futuros vinculados
-        const consistentPurchaseId =
-          existingTx.purchaseId ||
-          (existingTx.linha !== undefined
-            ? `pur-linha-${existingTx.linha}`
-            : `pur-${Date.now()}`);
-
-        const isSamePurchase = (t: Transaction): boolean => {
-          if (t.parcelas === 'Fixa' || t.id.startsWith('fixed-')) return false;
-          if (existingTx.purchaseId && t.purchaseId) {
-            return existingTx.purchaseId === t.purchaseId;
-          }
-          if (existingTx.linha !== undefined && t.linha !== undefined) {
-            const clean1 = existingTx.descricao
-              .replace(/\(Divis[ãa]o\)/gi, '')
-              .trim()
-              .toLowerCase();
-            const clean2 = t.descricao
-              .replace(/\(Divis[ãa]o\)/gi, '')
-              .trim()
-              .toLowerCase();
-            return existingTx.linha === t.linha && clean1 === clean2;
-          }
-          if (existingTx.id.startsWith('tx-') && t.id.startsWith('tx-')) {
-            const p1 = existingTx.id.split('-').slice(0, 2).join('-');
-            const p2 = t.id.split('-').slice(0, 2).join('-');
-            if (p1 === p2) return true;
-          }
-          const clean1 = existingTx.descricao
-            .replace(/\(Divis[ãa]o\)/gi, '')
-            .trim()
-            .toLowerCase();
-          const clean2 = t.descricao
-            .replace(/\(Divis[ãa]o\)/gi, '')
-            .trim()
-            .toLowerCase();
-          return clean1 === clean2;
-        };
-
-        const updatedMonths = { ...c.months };
-        let netDiffValue = oldVal - updatedTx.valor;
-
-        const thisMonthUpdatedTxs = (updatedMonths[normKey] || []).map((t) => {
-          if (t.id !== updatedTx.id) return t;
-          return {
-            ...t,
-            purchaseId: consistentPurchaseId,
-            descricao: updatedTx.descricao,
-            valor: updatedTx.valor,
-            data: updatedTx.data,
-            pagador: updatedTx.pagador,
-            parcelas: newParcelaStr,
-          };
+        // OPÇÃO B: renumera a sequência a partir desta parcela, atualiza os dados da compra
+        // e guarda/recupera as parcelas que saem/voltam da sequência (ver utils/editInstallments.ts)
+        return applyAllOccurrencesEdit(c, normKey, {
+          id: updatedTx.id,
+          descricao: updatedTx.descricao,
+          valor: updatedTx.valor,
+          data: updatedTx.data,
+          pagador: updatedTx.pagador,
+          parcelaAtual: updatedTx.parcelaAtual,
+          totalParcelas: updatedTx.totalParcelas,
         });
-
-        updatedMonths[normKey] = thisMonthUpdatedTxs;
-
-        const remainingNeeded = Math.max(0, updatedTx.totalParcelas - updatedTx.parcelaAtual);
-
-        for (let offset = 1; offset <= Math.max(remainingNeeded, 48); offset++) {
-          const futureMonthKey = addMonths(normKey, offset);
-          const shouldExist = offset <= remainingNeeded;
-          const futureInstallmentNum = updatedTx.parcelaAtual + offset;
-          const futureParcelaStr = `${futureInstallmentNum}/${updatedTx.totalParcelas}`;
-
-          const currentFutureTxs = updatedMonths[futureMonthKey] || [];
-          const existingFutureTx = currentFutureTxs.find((t) => isSamePurchase(t));
-
-          if (shouldExist) {
-            if (existingFutureTx) {
-              netDiffValue += existingFutureTx.valor - updatedTx.valor;
-              updatedMonths[futureMonthKey] = currentFutureTxs.map((t) => {
-                if (!isSamePurchase(t)) return t;
-                return {
-                  ...t,
-                  purchaseId: consistentPurchaseId,
-                  descricao: updatedTx.descricao,
-                  valor: updatedTx.valor,
-                  pagador: updatedTx.pagador,
-                  parcelas: futureParcelaStr,
-                };
-              });
-            } else {
-              netDiffValue -= updatedTx.valor;
-              const newTx: Transaction = {
-                id: `tx-${Date.now()}-${futureInstallmentNum}`,
-                purchaseId: consistentPurchaseId,
-                data: updatedTx.data,
-                descricao: updatedTx.descricao,
-                parcelas: futureParcelaStr,
-                valor: updatedTx.valor,
-                pagador: updatedTx.pagador,
-              };
-              updatedMonths[futureMonthKey] = [...currentFutureTxs, newTx];
-            }
-          } else if (existingFutureTx) {
-            netDiffValue += existingFutureTx.valor;
-            updatedMonths[futureMonthKey] = currentFutureTxs.filter(
-              (t) => !isSamePurchase(t)
-            );
-          }
-        }
-
-        for (let m = 1; m <= 12; m++) {
-          const mKey = `2026-${String(m).padStart(2, '0')}`;
-          if (updatedMonths[mKey]) {
-            updatedMonths[String(m)] = updatedMonths[mKey];
-          }
-        }
-
-        const newDisponivel = Math.round((c.disponivel + netDiffValue) * 100) / 100;
-
-        return {
-          ...c,
-          disponivel: newDisponivel,
-          months: updatedMonths,
-        };
       }),
       persons:
         updatedTx.pagador &&
@@ -1436,6 +1379,15 @@ export default function App() {
     });
   };
 
+  // Diagnóstico contínuo de parcelas para realocação de 2026 para 2027+
+  const reallocationStats = useMemo(() => {
+    try {
+      return analyzeReallocation(data.cards);
+    } catch {
+      return null;
+    }
+  }, [data.cards]);
+
   if (isSessionClosed) {
     return (
       <div
@@ -1485,7 +1437,41 @@ export default function App() {
         customHeaderTitle={data.customHeaderTitle}
         customTabNames={data.customTabNames}
         onRequestExit={handleRequestAppExit}
+        reallocationCount={reallocationStats?.totalInstallmentsToReallocate || 0}
+        onOpenCorrecaoParcelas={() => setIsCorrecaoModalOpen(true)}
       />
+
+      {/* Alerta Destacado: Parcelas que precisam de realocação para 2027 */}
+      {reallocationStats && reallocationStats.totalInstallmentsToReallocate > 0 && (
+        <div 
+          className="w-full border-b px-4 py-2.5 transition-all flex flex-wrap items-center justify-between gap-3 text-xs"
+          style={{
+            backgroundColor: 'rgba(245, 158, 11, 0.12)',
+            borderBottomColor: 'rgba(245, 158, 11, 0.35)',
+            color: '#fef3c7',
+          }}
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="p-1.5 rounded-lg bg-amber-500/20 text-amber-300">
+              <Wrench className="w-4 h-4" />
+            </span>
+            <div>
+              <span className="font-bold text-amber-300">Correção Automática Disponível: </span>
+              <span>
+                Identificamos <strong>{reallocationStats.totalInstallmentsToReallocate} parcelas</strong> em {reallocationStats.purchasesWithReallocation.length} compras de 2026 que pertencem a 2027 e anos seguintes.
+              </span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsCorrecaoModalOpen(true)}
+            className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center gap-1.5 shadow cursor-pointer text-xs"
+          >
+            <Wrench className="w-3.5 h-3.5" />
+            <span>Analisar e Corrigir Parcelas 2026 ➔ 2027</span>
+          </button>
+        </div>
+      )}
 
       {isExitPromptOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm" role="presentation">
@@ -1669,6 +1655,7 @@ export default function App() {
             accentTextColor={accentTextColor}
             panelColor={resolvedPanel}
             textColor={resolvedText}
+            onOpenCorrecaoParcelas={() => setIsCorrecaoModalOpen(true)}
           />
         )}
       </main>
@@ -1702,6 +1689,15 @@ export default function App() {
         onConfirm={confirmModal.onConfirm}
         onClose={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
         isDestructive={confirmModal.isDestructive}
+      />
+
+      {/* Modal de Correção Automática de Parcelas 2026 ➔ 2027+ */}
+      <ModalCorrecaoParcelas
+        isOpen={isCorrecaoModalOpen}
+        onClose={() => setIsCorrecaoModalOpen(false)}
+        appData={data}
+        onApplyData={(newData) => setData(newData)}
+        onNavigateToTab={(tab) => setActiveTab(tab)}
       />
 
       {/* Indicador de Status Offline */}

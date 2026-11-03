@@ -42,6 +42,7 @@ interface ModalLancamentoProps {
     descricao: string;
     valorParcela: number;
     totalParcelas: number;
+    parcelaInicial?: number;
     mesInicial: string;
     pagador1: string;
     dividir: boolean;
@@ -75,6 +76,8 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
     defaultMonthKey || CURRENT_REAL_MONTH
   );
   const [totalParcelas, setTotalParcelas] = useState<number>(1);
+  const [parcelaInicial, setParcelaInicial] = useState<number>(1);
+  const [usarParcelaInicial, setUsarParcelaInicial] = useState<boolean>(false);
   const [showCustomParcelas, setShowCustomParcelas] =
     useState<boolean>(false);
 
@@ -139,6 +142,8 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
     setDescricao('');
     setValorParcela('');
     setTotalParcelas(1);
+    setParcelaInicial(1);
+    setUsarParcelaInicial(false);
     setShowCustomParcelas(false);
 
     const defaultP1 = favPayers[0] || persons[0] || '';
@@ -217,6 +222,19 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
       return;
     }
 
+    if (usarParcelaInicial) {
+      if (isNaN(parcelaInicial) || parcelaInicial < 1) {
+        setErrorMsg('O número da parcela inicial deve ser igual ou maior que 1.');
+        return;
+      }
+      if (parcelaInicial > totalParcelas) {
+        setErrorMsg(
+          `O número da parcela inicial (${parcelaInicial}) não pode ser maior do que a quantidade total de parcelas (${totalParcelas}).`
+        );
+        return;
+      }
+    }
+
     if (!dataCompra) {
       setErrorMsg('Por favor, informe a data da compra.');
       return;
@@ -272,6 +290,7 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
         descricao: descricao.trim(),
         valorParcela: val,
         totalParcelas,
+        parcelaInicial: usarParcelaInicial ? parcelaInicial : 1,
         mesInicial: mesInicialKey,
         pagador1: p1Nome,
         dividir,
@@ -290,7 +309,11 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
   };
 
   const parsedValor = parseFloat(valorParcela.replace(',', '.')) || 0;
+  const parcelasRestantes = usarParcelaInicial
+    ? Math.max(1, totalParcelas - parcelaInicial + 1)
+    : totalParcelas;
   const valorTotalCompra = parsedValor * totalParcelas;
+  const valorTotalLancar = parsedValor * parcelasRestantes;
   const valorDivididoParcela = dividir
     ? Math.round((parsedValor / 2) * 100) / 100
     : parsedValor;
@@ -466,8 +489,13 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
                 Total da Compra:
               </label>
 
-              <div className="bg-slate-800/80 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono font-bold text-emerald-400">
-                {formatCurrency(valorTotalCompra)}
+              <div className="bg-slate-800/80 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono font-bold text-emerald-400 flex flex-col justify-center">
+                <span>{formatCurrency(valorTotalCompra)}</span>
+                {usarParcelaInicial && parcelasRestantes < totalParcelas && (
+                  <span className="text-[10px] text-emerald-300/80 font-normal mt-0.5">
+                    A lançar ({parcelasRestantes} parcelas restantes): {formatCurrency(valorTotalLancar)}
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -480,6 +508,11 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
                 <span className="text-emerald-400 font-bold font-mono">
                   {totalParcelas}x
                 </span>
+                {usarParcelaInicial && (
+                  <span className="ml-2 text-xs font-normal text-amber-400">
+                    (iniciando na {parcelaInicial}ª parcela)
+                  </span>
+                )}
               </label>
 
               {showCustomParcelas && (
@@ -496,6 +529,7 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
                   type="button"
                   onClick={() => {
                     setTotalParcelas(num);
+                    if (parcelaInicial > num) setParcelaInicial(1);
                     setShowCustomParcelas(false);
                   }}
                   className={`py-1.5 px-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -524,17 +558,20 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
             </div>
 
             {showCustomParcelas && (
-              <div className="mt-2.5 p-3 bg-slate-900 border border-slate-700 rounded-xl space-y-2 animate-in fade-in">
-                <div className="flex items-center gap-2">
+              <div className="mt-2.5 p-3 bg-slate-900 border border-slate-700 rounded-xl space-y-2.5 animate-in fade-in">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs text-slate-300">
                     Atalhos rápidos:
                   </span>
 
-                  {[18, 24, 36, 48].map((preset) => (
+                  {[4, 16, 18, 48].map((preset) => (
                     <button
                       key={preset}
                       type="button"
-                      onClick={() => setTotalParcelas(preset)}
+                      onClick={() => {
+                        setTotalParcelas(preset);
+                        if (parcelaInicial > preset) setParcelaInicial(1);
+                      }}
                       className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer font-mono ${
                         totalParcelas === preset
                           ? 'bg-emerald-500 text-slate-950'
@@ -544,29 +581,112 @@ export const ModalLancamento: React.FC<ModalLancamentoProps> = ({
                       {preset}x
                     </button>
                   ))}
+
+                  <div className="flex items-center gap-1.5 pl-2 border-l border-slate-700">
+                    <label className="text-xs text-slate-300 whitespace-nowrap">
+                      Ou digite o número exato:
+                    </label>
+
+                    <input
+                      type="number"
+                      min={1}
+                      max={120}
+                      value={totalParcelas}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value, 10);
+                        if (!isNaN(val) && val >= 1 && val <= 120) {
+                          setTotalParcelas(val);
+                          if (parcelaInicial > val) setParcelaInicial(1);
+                        }
+                      }}
+                      className="w-20 bg-slate-800 border border-slate-600 text-white rounded-lg px-2.5 py-1 text-xs font-mono font-bold focus:outline-none focus:border-emerald-500"
+                    />
+
+                    <span className="text-xs text-slate-400">parcelas</span>
+                  </div>
                 </div>
+              </div>
+            )}
 
-                <div className="flex items-center gap-2">
-                  <label className="text-xs text-slate-300 whitespace-nowrap">
-                    Ou digite o número exato:
-                  </label>
-
+            {/* Opção D — Escolher parcela inicial (somente quando parcelado) */}
+            {totalParcelas > 1 && (
+              <div className="mt-3 p-3 bg-slate-900/90 border border-slate-700/80 rounded-xl space-y-2.5 animate-in fade-in">
+                <label className="flex items-center gap-2 cursor-pointer select-none">
                   <input
-                    type="number"
-                    min={1}
-                    max={120}
-                    value={totalParcelas}
+                    type="checkbox"
+                    checked={usarParcelaInicial}
                     onChange={(e) => {
-                      const val = parseInt(e.target.value, 10);
-                      if (!isNaN(val) && val >= 1 && val <= 120) {
-                        setTotalParcelas(val);
+                      const checked = e.target.checked;
+                      setUsarParcelaInicial(checked);
+                      if (!checked) {
+                        setParcelaInicial(1);
                       }
                     }}
-                    className="w-24 bg-slate-800 border border-slate-600 text-white rounded-lg px-2.5 py-1 text-xs font-mono font-bold focus:outline-none focus:border-emerald-500"
+                    className="w-4 h-4 rounded text-emerald-500 bg-slate-800 border-slate-700 focus:ring-0 cursor-pointer"
                   />
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-bold text-xs text-white">
+                      Opção D — Escolher parcela inicial
+                    </span>
+                    <span className="text-[11px] text-slate-400">
+                      (compra em andamento)
+                    </span>
+                  </div>
+                </label>
 
-                  <span className="text-xs text-slate-400">parcelas</span>
-                </div>
+                {usarParcelaInicial && (
+                  <div className="p-3 bg-slate-950/70 border border-slate-800 rounded-xl space-y-2.5 animate-in fade-in">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs font-semibold text-slate-300 block mb-1">
+                          Número da Parcela Inicial:
+                        </label>
+                        <input
+                          type="number"
+                          min={1}
+                          max={totalParcelas}
+                          value={parcelaInicial}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value, 10);
+                            if (!isNaN(val) && val >= 1) {
+                              setParcelaInicial(val);
+                            }
+                          }}
+                          className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-3 py-1.5 text-xs font-mono font-bold focus:outline-none focus:border-emerald-500"
+                        />
+                        <span className="text-[10px] text-slate-400 mt-0.5 block">
+                          Começa na parcela {parcelaInicial} (as anteriores já foram pagas)
+                        </span>
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-semibold text-slate-300 block mb-1">
+                          Quantidade Total de Parcelas:
+                        </label>
+                        <input
+                          type="number"
+                          min={Math.max(1, parcelaInicial)}
+                          max={120}
+                          value={totalParcelas}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value, 10);
+                            if (!isNaN(val) && val >= 1 && val <= 120) {
+                              setTotalParcelas(val);
+                            }
+                          }}
+                          className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-3 py-1.5 text-xs font-mono font-bold focus:outline-none focus:border-emerald-500"
+                        />
+                        <span className="text-[10px] text-slate-400 mt-0.5 block">
+                          Total contratado da compra original ({totalParcelas}x)
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-2.5 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-300 text-[11px] leading-relaxed">
+                      <strong>Resumo do lançamento:</strong> Serão geradas as parcelas de <strong>{parcelaInicial}/{totalParcelas}</strong> até <strong>{totalParcelas}/{totalParcelas}</strong> ({totalParcelas - parcelaInicial + 1} parcelas), iniciando na fatura de <strong>{formatMonthLong(mesInicialKey)}</strong>. As parcelas anteriores não serão criadas.
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

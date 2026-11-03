@@ -25,7 +25,8 @@ import {
   ChevronUp,
   Palette,
   Layers,
-  Sparkles
+  Sparkles,
+  Wrench,
 } from 'lucide-react';
 import { SeedData, TabPreferences, CustomTabNames, ThemeConfig } from '../types';
 import { resetToOriginalData } from '../utils/browserStorage';
@@ -103,6 +104,7 @@ interface ConfiguracoesViewProps {
   accentTextColor?: string;
   panelColor?: string;
   textColor?: string;
+  onOpenCorrecaoParcelas?: () => void;
 }
 
 export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
@@ -112,6 +114,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
   accentTextColor = '#000000',
   panelColor,
   textColor,
+  onOpenCorrecaoParcelas,
 }) => {
   const [feedback, setFeedback] = useState<{ text: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
@@ -733,6 +736,31 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
                 <RotateCcw className="w-4 h-4 text-rose-400" />
                 <span>Zerar Todas as Tabelas</span>
               </button>
+            </div>
+
+            {/* Painel da Ferramenta de Correção Automática de Parcelas 2026 ➔ 2027 */}
+            <div className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Wrench className="w-4 h-4 text-sky-400" />
+                  <h4 className="text-xs font-bold text-white">
+                    Correção Automática: Realocar Parcelas de 2026 para 2027 e Anos Seguintes
+                  </h4>
+                </div>
+                <p className="text-xs text-slate-300">
+                  Examina todos os cartões, identifica compras com parcelas que deveriam estar em 2027+ e as realoca cronologicamente com total segurança e backup prévio.
+                </p>
+              </div>
+              {onOpenCorrecaoParcelas && (
+                <button
+                  type="button"
+                  onClick={onOpenCorrecaoParcelas}
+                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-md active:scale-98"
+                >
+                  <Wrench className="w-3.5 h-3.5" />
+                  <span>Abrir Correção</span>
+                </button>
+              )}
             </div>
 
           </div>

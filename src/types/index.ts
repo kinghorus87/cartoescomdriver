@@ -10,6 +10,16 @@ export interface Transaction {
   pago?: boolean;
 }
 
+/**
+ * Parcela temporariamente retirada da sequência (ex.: total de parcelas reduzido
+ * ou numeração avançada na edição "Alterar todas as ocorrências").
+ * Fica guardada no cartão, fora de `months`, para poder reaparecer depois.
+ */
+export interface ArchivedInstallment {
+  monthKey: string; // Mês original da parcela no formato AAAA-MM
+  tx: Transaction;  // Registro completo (data, valor, descrição, pagador, pago, purchaseId)
+}
+
 export interface FixedExpense {
   id: string;
   cardId: string;
@@ -48,6 +58,7 @@ export interface CardData {
   archived?: boolean; // Cartão desativado/arquivado com histórico preservado
   exibirIdentificacao?: boolean; // Caixa de seleção: Exibir identificação do cartão
   months: Record<string, Transaction[]>;
+  archivedInstallments?: ArchivedInstallment[]; // Parcelas retiradas da sequência, recuperáveis (não aparecem como lançamentos ativos)
 }
 
 export interface CustomTabNames {

@@ -200,10 +200,24 @@ export function pruneOutOfWindowData(data: SeedData, anchorMonthKey?: string): {
       newMonths[mKey] = txs;
     });
 
+    // Parcelas guardadas (retiradas da sequência) de meses já expirados também são excluídas
+    let newArchived = card.archivedInstallments;
+    if (newArchived && newArchived.length > 0) {
+      const keptArchived = newArchived.filter(
+        (a) => diffMonths(startMonthKey, parseMonthKey(a.monthKey).key) >= 0
+      );
+      if (keptArchived.length !== newArchived.length) {
+        cardModified = true;
+        prunedTxsCount += newArchived.length - keptArchived.length;
+        newArchived = keptArchived;
+      }
+    }
+
     if (!cardModified) return card;
     return {
       ...card,
       months: newMonths,
+      ...(newArchived ? { archivedInstallments: newArchived } : {}),
     };
   });
 

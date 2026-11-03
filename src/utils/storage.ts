@@ -58,30 +58,39 @@ export function getEmptySeedData(): SeedData {
 }
 
 /**
- * Retorna os dados padrão da aplicação: agora 100% zerados por padrão.
+ * Retorna os dados padrão da aplicação carregando a base de cartões da planilha (19 cartões).
  */
 export function getDefaultSeedData(): SeedData {
-  return getEmptySeedData();
+  const raw = seedDataRaw as any;
+  return {
+    ...getEmptySeedData(),
+    ...raw,
+    cards: (raw.cards || []).map((c: any) => ({
+      ...c,
+      disponivel: typeof c.disponivel === 'number' ? c.disponivel : c.limite,
+      months: c.months || {},
+    })),
+    cardsList: raw.cardsList || (raw.cards || []).map((c: any) => c.name),
+    persons: raw.persons || [],
+    favoritePersons: ['Paloma', 'Celia'],
+    simulator: {
+      ...getEmptySeedData().simulator,
+      ...(raw.simulator || {}),
+      blockFixedExpenses: [],
+      savedValues: {},
+    },
+  };
 }
 
 /**
- * Obtém os dados iniciais do localStorage, iniciando 100% zerado por padrão.
+ * Obtém os dados iniciais do localStorage, iniciando com os dados da planilha se ainda não houver dados salvos.
  */
 export function getInitialData(): SeedData {
   try {
-    // Força a reinicialização zerada uma vez para limpar dados legados do Excel salvos anteriormente
-    const hasZeroedInit = localStorage.getItem(RESET_ZEROED_VERSION_KEY);
-    if (!hasZeroedInit) {
-      localStorage.setItem(RESET_ZEROED_VERSION_KEY, 'true');
-      const empty = getEmptySeedData();
-      saveAppData(empty);
-      return empty;
-    }
-
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (parsed && Array.isArray(parsed.cards)) {
+      if (parsed && Array.isArray(parsed.cards) && parsed.cards.length > 0) {
         const loadedData: SeedData = {
           ...getEmptySeedData(),
           ...parsed,
@@ -121,9 +130,9 @@ export function getInitialData(): SeedData {
     console.error('Erro ao ler dados do localStorage:', err);
   }
 
-  const empty = getEmptySeedData();
-  saveAppData(empty);
-  return empty;
+  const defaultData = getDefaultSeedData();
+  saveAppData(defaultData);
+  return defaultData;
 }
 
 /**
@@ -138,9 +147,18 @@ export function saveAppData(data: SeedData): void {
 }
 
 /**
- * Limpa completamente o localStorage e restaura os dados 100% ZERADOS.
+ * Restaura os dados originais da planilha (19 cartões).
  */
 export function resetToSeedData(): SeedData {
+  const defaultData = getDefaultSeedData();
+  saveAppData(defaultData);
+  return defaultData;
+}
+
+/**
+ * Limpa completamente o localStorage e deixa os dados 100% zerados.
+ */
+export function resetToZeroedData(): SeedData {
   const empty = getEmptySeedData();
   saveAppData(empty);
   return empty;
