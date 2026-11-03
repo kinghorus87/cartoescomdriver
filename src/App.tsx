@@ -9,7 +9,7 @@ import {
 import {
   loadAppData as loadBrowserData,
   saveAppData as saveBrowserData,
-  resetToOriginalData 
+  resetOperationalData
 } from './utils/browserStorage';
 import { 
   addMonths, 
@@ -19,8 +19,7 @@ import {
   getCardTransactions,
   pruneOutOfWindowData,
   isMonthInRollingWindow,
-  getCurrentSystemMonthKey,
-  getRolling36Window
+  getCurrentSystemMonthKey
 } from './utils/timeline';
 import { 
   THEME_BG_PRESETS, 
@@ -48,10 +47,7 @@ import { ModalAdicionarCartao } from './components/ModalAdicionarCartao';
 import { ModalConfirmacao } from './components/ModalConfirmacao';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ConfiguracoesView } from './components/ConfiguracoesView';
-import { ModalCorrecaoParcelas } from './components/ModalCorrecaoParcelas';
-import { analyzeReallocation } from './utils/reallocateInstallments';
 import { applyAllOccurrencesEdit, resolvePurchaseId } from './utils/editInstallments';
-import { Wrench } from 'lucide-react';
 
 export default function App() {
   // Abertura direta: sem tela de login, sem usuário e senha, 100% local
@@ -63,7 +59,6 @@ export default function App() {
   const [isSessionClosed, setIsSessionClosed] = useState(false);
   const [isExitActionBusy, setIsExitActionBusy] = useState(false);
   const [exitActionError, setExitActionError] = useState<string | null>(null);
-  const [isCorrecaoModalOpen, setIsCorrecaoModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<ViewTab>('limites');
   const [isMiniSimPinned, setIsMiniSimPinned] = useState<boolean>(() => {
     try {
@@ -929,18 +924,21 @@ export default function App() {
     }));
   };
 
-  const handleResetToSeed = () => {
-    setConfirmModal({
-      isOpen: true,
-      title: 'Limpar e Zerar Todos os Dados?',
-      message: 'Esta ação irá limpar completamente os dados salvos no navegador (localStorage). Todas as tabelas, cartões cadastrados, faturas e a matriz de gastos ficarão totalmente zeradas para você começar do zero.',
-      isDestructive: true,
-      onConfirm: async () => {
-        const fresh = await resetToOriginalData();
-        setData(fresh);
-        setSelectedCardId('');
-      },
-    });
+  // Configurações → Zerar todas as tabelas (a confirmação é feita na tela de Configurações)
+  const handleResetOperationalData = async (): Promise<{ success: boolean; error?: string }> => {
+    try {
+      const zeroed = await resetOperationalData(data);
+      // A limpeza já foi gravada: "sair sem salvar" não pode trazer os dados antigos de volta
+      savedSessionDataRef.current = JSON.parse(JSON.stringify(zeroed)) as SeedData;
+      setData(zeroed);
+      setSelectedCardId('');
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Não foi possível zerar os dados.',
+      };
+    }
   };
 
   const handleCardSelectedFromDashboard = (cardId: string) => {
@@ -1379,15 +1377,6 @@ export default function App() {
     });
   };
 
-  // Diagnóstico contínuo de parcelas para realocação de 2026 para 2027+
-  const reallocationStats = useMemo(() => {
-    try {
-      return analyzeReallocation(data.cards);
-    } catch {
-      return null;
-    }
-  }, [data.cards]);
-
   if (isSessionClosed) {
     return (
       <div
@@ -1437,41 +1426,7 @@ export default function App() {
         customHeaderTitle={data.customHeaderTitle}
         customTabNames={data.customTabNames}
         onRequestExit={handleRequestAppExit}
-        reallocationCount={reallocationStats?.totalInstallmentsToReallocate || 0}
-        onOpenCorrecaoParcelas={() => setIsCorrecaoModalOpen(true)}
       />
-
-      {/* Alerta Destacado: Parcelas que precisam de realocação para 2027 */}
-      {reallocationStats && reallocationStats.totalInstallmentsToReallocate > 0 && (
-        <div 
-          className="w-full border-b px-4 py-2.5 transition-all flex flex-wrap items-center justify-between gap-3 text-xs"
-          style={{
-            backgroundColor: 'rgba(245, 158, 11, 0.12)',
-            borderBottomColor: 'rgba(245, 158, 11, 0.35)',
-            color: '#fef3c7',
-          }}
-        >
-          <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-amber-500/20 text-amber-300">
-              <Wrench className="w-4 h-4" />
-            </span>
-            <div>
-              <span className="font-bold text-amber-300">Correção Automática Disponível: </span>
-              <span>
-                Identificamos <strong>{reallocationStats.totalInstallmentsToReallocate} parcelas</strong> em {reallocationStats.purchasesWithReallocation.length} compras de 2026 que pertencem a 2027 e anos seguintes.
-              </span>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => setIsCorrecaoModalOpen(true)}
-            className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition flex items-center gap-1.5 shadow cursor-pointer text-xs"
-          >
-            <Wrench className="w-3.5 h-3.5" />
-            <span>Analisar e Corrigir Parcelas 2026 ➔ 2027</span>
-          </button>
-        </div>
-      )}
 
       {isExitPromptOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm" role="presentation">
@@ -1651,11 +1606,11 @@ export default function App() {
           <ConfiguracoesView
             appData={data}
             onUpdateAppData={setData}
+            onResetOperationalData={handleResetOperationalData}
             accentColor={resolvedAccent}
             accentTextColor={accentTextColor}
             panelColor={resolvedPanel}
             textColor={resolvedText}
-            onOpenCorrecaoParcelas={() => setIsCorrecaoModalOpen(true)}
           />
         )}
       </main>
@@ -1689,15 +1644,6 @@ export default function App() {
         onConfirm={confirmModal.onConfirm}
         onClose={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
         isDestructive={confirmModal.isDestructive}
-      />
-
-      {/* Modal de Correção Automática de Parcelas 2026 ➔ 2027+ */}
-      <ModalCorrecaoParcelas
-        isOpen={isCorrecaoModalOpen}
-        onClose={() => setIsCorrecaoModalOpen(false)}
-        appData={data}
-        onApplyData={(newData) => setData(newData)}
-        onNavigateToTab={(tab) => setActiveTab(tab)}
       />
 
       {/* Indicador de Status Offline */}

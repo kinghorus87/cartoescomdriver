@@ -90,7 +90,9 @@ export function getInitialData(): SeedData {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (parsed && Array.isArray(parsed.cards) && parsed.cards.length > 0) {
+      // Uma base salva com zero cartões é um estado válido (ex.: depois de "Zerar todas as tabelas").
+      // Só a ausência de dados salvos deve carregar a planilha padrão.
+      if (parsed && Array.isArray(parsed.cards)) {
         const loadedData: SeedData = {
           ...getEmptySeedData(),
           ...parsed,
@@ -133,6 +135,69 @@ export function getInitialData(): SeedData {
   const defaultData = getDefaultSeedData();
   saveAppData(defaultData);
   return defaultData;
+}
+
+/**
+ * Gera uma cópia dos dados com TODOS os dados operacionais zerados e as configurações preservadas.
+ *
+ * Zerados: cartões (limites, lançamentos, parcelas, parcelas guardadas para recuperação),
+ * lista de cartões, pagadores/pessoas (inclusive ocultos e favoritos), despesas fixas,
+ * faturas pagas e os valores/registros do simulador.
+ * Preservados: tema, layout, preferências e nomes de abas, título, títulos editáveis, ano selecionado
+ * e as configurações do simulador que não são dados (nomes dos blocos e bloco da energia).
+ */
+export function buildZeroedData(current: SeedData): SeedData {
+  const sim = current.simulator;
+  return {
+    ...current,
+    cards: [],
+    cardsList: [],
+    persons: [],
+    hiddenPersons: [],
+    favoritePersons: [],
+    fixedExpenses: [],
+    paidInvoices: {},
+    simulator: {
+      mensalCards: [],
+      quinzenaCards: [],
+      energiaBlock: sim?.energiaBlock ?? getEmptySeedData().simulator.energiaBlock,
+      block1Name: sim?.block1Name ?? getEmptySeedData().simulator.block1Name,
+      block2Name: sim?.block2Name ?? getEmptySeedData().simulator.block2Name,
+      blockFixedExpenses: [],
+      pinnedPerson: null,
+      savedValues: {},
+    },
+  };
+}
+
+const PRE_REALLOC_BACKUP_PREFIX = 'cartoes_backup_pre_realloc_';
+
+/**
+ * Remove do localStorage as cópias de segurança automáticas da ferramenta de correção de parcelas,
+ * que guardam uma cópia completa dos dados antigos. Retorna quantas foram removidas.
+ */
+export function clearOperationalBackups(): number {
+  const keys: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(PRE_REALLOC_BACKUP_PREFIX)) keys.push(key);
+  }
+  keys.forEach((key) => localStorage.removeItem(key));
+  return keys.length;
+}
+
+/**
+ * Confirma, lendo o localStorage de volta, que a base salva está sem cartões.
+ */
+export function isStoredDataEmpty(): boolean {
+  try {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (!saved) return false;
+    const parsed = JSON.parse(saved);
+    return Boolean(parsed) && Array.isArray(parsed.cards) && parsed.cards.length === 0;
+  } catch {
+    return false;
+  }
 }
 
 /**

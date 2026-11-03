@@ -4,6 +4,9 @@ import {
   saveAppData as saveLocalStorageData,
   getEmptySeedData,
   getDefaultSeedData,
+  buildZeroedData,
+  clearOperationalBackups,
+  isStoredDataEmpty,
 } from './storage';
 
 const DATABASE_NAME = 'cartoes-browser-files-v1';
@@ -303,6 +306,29 @@ export async function resetToOriginalData(): Promise<SeedData> {
   const fresh = getDefaultSeedData();
   await saveAppData(fresh);
   return fresh;
+}
+
+/**
+ * "Zerar todas as tabelas": apaga os dados operacionais (cartões, lançamentos, parcelas, pagadores,
+ * faturas, despesas fixas, simulador e cópias de segurança da correção de parcelas) e preserva
+ * tema, preferências e demais configurações.
+ *
+ * Grava no localStorage e, se houver arquivo de dados conectado, também no arquivo (senão o arquivo
+ * restauraria os registros antigos na próxima abertura). Se qualquer gravação falhar, desfaz e lança erro.
+ */
+export async function resetOperationalData(current: SeedData): Promise<SeedData> {
+  const zeroed = buildZeroedData(current);
+  const result = await saveAppData(zeroed);
+  if (!result.success) {
+    saveLocalStorageData(current);
+    throw new Error(result.error || 'Não foi possível gravar os dados zerados. Nada foi apagado.');
+  }
+  if (!isStoredDataEmpty()) {
+    saveLocalStorageData(current);
+    throw new Error('O navegador não confirmou a gravação dos dados zerados. Nada foi apagado.');
+  }
+  clearOperationalBackups();
+  return zeroed;
 }
 
 export async function resetToEmptyData(): Promise<SeedData> {

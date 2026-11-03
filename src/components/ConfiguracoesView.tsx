@@ -26,10 +26,8 @@ import {
   Palette,
   Layers,
   Sparkles,
-  Wrench,
 } from 'lucide-react';
 import { SeedData, TabPreferences, CustomTabNames, ThemeConfig } from '../types';
-import { resetToOriginalData } from '../utils/browserStorage';
 import { exportBackup } from '../utils/storage';
 import { DriveFileStorage } from './DriveFileStorage';
 import { ModalConfirmacao } from './ModalConfirmacao';
@@ -100,21 +98,21 @@ class StoragePanelBoundary extends React.Component<React.PropsWithChildren, Stor
 interface ConfiguracoesViewProps {
   appData: SeedData;
   onUpdateAppData: (data: SeedData) => void;
+  onResetOperationalData?: () => Promise<{ success: boolean; error?: string }>;
   accentColor?: string;
   accentTextColor?: string;
   panelColor?: string;
   textColor?: string;
-  onOpenCorrecaoParcelas?: () => void;
 }
 
 export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
   appData,
   onUpdateAppData,
+  onResetOperationalData,
   accentColor = '#38bdf8',
   accentTextColor = '#000000',
   panelColor,
   textColor,
-  onOpenCorrecaoParcelas,
 }) => {
   const [feedback, setFeedback] = useState<{ text: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
@@ -328,16 +326,19 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
 
   const handleConfirmResetSeed = async () => {
     setIsResetConfirmOpen(false);
+    if (!onResetOperationalData) {
+      showFeedback('Não foi possível zerar os dados: a ação não está disponível.', 'error');
+      return;
+    }
     try {
-      const res = await resetToOriginalData();
-      if (res && Array.isArray(res.cards)) {
-        onUpdateAppData(res);
-        showFeedback('Todas as tabelas foram zeradas com sucesso!', 'info');
+      const result = await onResetOperationalData();
+      if (result.success) {
+        showFeedback('Todas as tabelas foram zeradas com sucesso! Tema e configurações foram preservados.', 'success');
       } else {
-        showFeedback('Erro ao zerar dados locais.', 'error');
+        showFeedback(result.error || 'Erro ao zerar dados locais. Nenhum dado foi apagado.', 'error');
       }
     } catch {
-      showFeedback('Erro ao zerar dados locais.', 'error');
+      showFeedback('Erro ao zerar dados locais. Nenhum dado foi apagado.', 'error');
     }
   };
 
@@ -736,31 +737,6 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
                 <RotateCcw className="w-4 h-4 text-rose-400" />
                 <span>Zerar Todas as Tabelas</span>
               </button>
-            </div>
-
-            {/* Painel da Ferramenta de Correção Automática de Parcelas 2026 ➔ 2027 */}
-            <div className="p-4 rounded-2xl border border-sky-500/30 bg-sky-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <Wrench className="w-4 h-4 text-sky-400" />
-                  <h4 className="text-xs font-bold text-white">
-                    Correção Automática: Realocar Parcelas de 2026 para 2027 e Anos Seguintes
-                  </h4>
-                </div>
-                <p className="text-xs text-slate-300">
-                  Examina todos os cartões, identifica compras com parcelas que deveriam estar em 2027+ e as realoca cronologicamente com total segurança e backup prévio.
-                </p>
-              </div>
-              {onOpenCorrecaoParcelas && (
-                <button
-                  type="button"
-                  onClick={onOpenCorrecaoParcelas}
-                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-md active:scale-98"
-                >
-                  <Wrench className="w-3.5 h-3.5" />
-                  <span>Abrir Correção</span>
-                </button>
-              )}
             </div>
 
           </div>
@@ -1745,7 +1721,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
       <ModalConfirmacao
         isOpen={isResetConfirmOpen}
         title="Limpar e Zerar Todos os Dados?"
-        message="Esta ação irá apagar completamente todos os cartões cadastrados, faturas, lançamentos parcelados, despesas fixas e a matriz de gastos salvos no navegador (localStorage). O sistema ficará 100% zerado para você cadastrar tudo do zero. Deseja prosseguir?"
+        message="Esta ação apagará definitivamente todos os registros operacionais: cartões e limites, lançamentos, compras parceladas (inclusive parcelas guardadas), despesas fixas, pagadores, faturas e pagamentos, e os valores do simulador. Tema, aparência e preferências serão mantidos. Não é possível desfazer — exporte um JSON antes, se quiser uma cópia. Deseja prosseguir?"
         confirmLabel="Sim, Zerar Tudo"
         cancelLabel="Cancelar"
         isDestructive={true}
