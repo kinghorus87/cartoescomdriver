@@ -38,6 +38,7 @@ export type PendingDataFile = {
 let fileWriteEnabled = false;
 let writeQueue: Promise<void> = Promise.resolve();
 let lastWriteError: string | undefined;
+let cachedFileHandle: DataFileHandle | null = null;
 
 function supportsFilePickers(): boolean {
   return typeof window !== 'undefined' &&
@@ -64,7 +65,8 @@ async function getSavedFile(): Promise<DataFileHandle | null> {
     const request = database.transaction(STORE_NAME, 'readonly').objectStore(STORE_NAME).get(FILE_KEY);
     request.onsuccess = () => {
       database.close();
-      resolve((request.result as DataFileHandle | undefined) || null);
+      cachedFileHandle = (request.result as DataFileHandle | undefined) || null;
+      resolve(cachedFileHandle);
     };
     request.onerror = () => {
       database.close();
@@ -80,6 +82,7 @@ async function storeFile(file: DataFileHandle): Promise<void> {
     transaction.objectStore(STORE_NAME).put(file, FILE_KEY);
     transaction.oncomplete = () => {
       database.close();
+      cachedFileHandle = file;
       resolve();
     };
     transaction.onerror = () => {
@@ -110,6 +113,7 @@ export async function disconnectDataFile(): Promise<void> {
     };
   });
   fileWriteEnabled = false;
+  cachedFileHandle = null;
   lastWriteError = undefined;
   notifyFileStatusChange();
 }
@@ -166,6 +170,22 @@ const jsonPickerTypes = [{
   description: 'Arquivo JSON do Cartões',
   accept: { 'application/json': ['.json'] },
 }];
+
+export async function openSavedDataFileLocation(): Promise<void> {
+  if (!supportsFilePickers()) {
+    throw new Error('Seu navegador não permite abrir o seletor de arquivos. Use Chrome ou Edge em localhost ou HTTPS.');
+  }
+  // getDataFileStatus loads this handle before the user clicks, keeping the picker call
+  // directly in the click flow so the browser's user-activation requirement is met.
+  const fileHandle = cachedFileHandle || await getSavedFile();
+  if (!fileHandle) throw new Error('Ainda não há um arquivo de dados conectado.');
+  await (window as any).showOpenFilePicker({
+    id: 'cartoes-data-location',
+    startIn: fileHandle,
+    multiple: false,
+    types: jsonPickerTypes,
+  });
+}
 
 export async function chooseExistingDataFile(): Promise<PendingDataFile> {
   if (!supportsFilePickers()) {

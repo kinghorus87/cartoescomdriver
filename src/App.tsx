@@ -54,6 +54,11 @@ export default function App() {
   const [data, setData] = useState<SeedData>(() => getInitialData());
   const [dataReady, setDataReady] = useState(false);
   const initialLoadDone = useRef(false);
+  const savedSessionDataRef = useRef<SeedData>(JSON.parse(JSON.stringify(data)) as SeedData);
+  const [isExitPromptOpen, setIsExitPromptOpen] = useState(false);
+  const [isSessionClosed, setIsSessionClosed] = useState(false);
+  const [isExitActionBusy, setIsExitActionBusy] = useState(false);
+  const [exitActionError, setExitActionError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<ViewTab>('limites');
   const [isMiniSimPinned, setIsMiniSimPinned] = useState<boolean>(() => {
     try {
@@ -129,6 +134,7 @@ export default function App() {
               if (!result.success) console.error(result.error);
             }).catch(console.error);
           }
+          savedSessionDataRef.current = JSON.parse(JSON.stringify(pruned)) as SeedData;
           setData(pruned);
         }
       } catch (err) {
@@ -150,7 +156,7 @@ export default function App() {
 
   // Monitoramento dinâmico da virada de mês para avanço automático da janela de 36 meses
   useEffect(() => {
-    if (!dataReady) return;
+    if (!dataReady || isSessionClosed) return;
 
     const checkMonthRoll = () => {
       setData((current) => {
@@ -173,17 +179,56 @@ export default function App() {
       clearInterval(timer);
       window.removeEventListener('focus', checkMonthRoll);
     };
-  }, [dataReady]);
+  }, [dataReady, isSessionClosed]);
 
   // Salvamento contínuo e atômico a cada alteração
   useEffect(() => {
-    if (!dataReady || !initialLoadDone.current) return;
+    if (!dataReady || !initialLoadDone.current || isSessionClosed) return;
     saveBrowserData(data).then((result) => {
       if (!result.success) console.error(result.error);
     }).catch((err) => {
       console.error('Falha ao persistir dados locais:', err);
     });
-  }, [data, dataReady]);
+  }, [data, dataReady, isSessionClosed]);
+
+  const handleRequestAppExit = () => {
+    setExitActionError(null);
+    setIsExitPromptOpen(true);
+  };
+
+  const handleFinishAppExit = async (saveCurrentChanges: boolean) => {
+    setIsExitActionBusy(true);
+    setExitActionError(null);
+
+    const dataToKeep = saveCurrentChanges
+      ? data
+      : (JSON.parse(JSON.stringify(savedSessionDataRef.current)) as SeedData);
+
+    try {
+      const result = await saveBrowserData(dataToKeep);
+      if (!result.success) {
+        setExitActionError(result.error || 'Não foi possível salvar os dados antes de sair.');
+        return;
+      }
+
+      savedSessionDataRef.current = JSON.parse(JSON.stringify(dataToKeep)) as SeedData;
+      if (!saveCurrentChanges) setData(dataToKeep);
+      setIsExitPromptOpen(false);
+      setIsSessionClosed(true);
+      // Browsers may refuse to close windows opened by the user. When allowed
+      // (for example, a single-entry installed PWA window), close after the
+      // save/restore finishes; otherwise the closed-session screen remains.
+      try {
+        window.close();
+      } catch {
+        // The fallback screen explains that the user can close with the system X.
+      }
+    } catch (error) {
+      setExitActionError(error instanceof Error ? error.message : 'Não foi possível finalizar a saída.');
+    } finally {
+      setIsExitActionBusy(false);
+    }
+  };
 
   const handleOpenLancamento = (cardName?: string) => {
     if (data.cards.length === 0) {
@@ -1391,6 +1436,31 @@ export default function App() {
     });
   };
 
+  if (isSessionClosed) {
+    return (
+      <div
+        className="min-h-screen flex items-center justify-center p-5 font-sans"
+        style={{ backgroundColor: resolvedBg, color: resolvedText }}
+      >
+        <section
+          className="w-full max-w-md rounded-2xl border p-6 text-center shadow-xl"
+          style={{ backgroundColor: resolvedPanel, borderColor: resolvedBorder }}
+        >
+          <h1 className="text-xl font-bold">Sessão encerrada</h1>
+          <p className="mt-2 text-sm opacity-75">Se a janela continuar aberta, feche pelo X do sistema. Esse X também mantém o salvamento automático normal.</p>
+          <button
+            type="button"
+            onClick={() => setIsSessionClosed(false)}
+            className="mt-5 rounded-xl px-4 py-2.5 text-sm font-bold"
+            style={{ backgroundColor: resolvedAccent, color: accentTextColor }}
+          >
+            Voltar ao aplicativo
+          </button>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div
       className="theme-app-container min-h-screen flex flex-col font-sans transition-colors duration-150"
@@ -1414,7 +1484,57 @@ export default function App() {
         tabPreferences={data.tabPreferences}
         customHeaderTitle={data.customHeaderTitle}
         customTabNames={data.customTabNames}
+        onRequestExit={handleRequestAppExit}
       />
+
+      {isExitPromptOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm" role="presentation">
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="app-exit-title"
+            className="w-full max-w-md rounded-2xl border p-5 shadow-2xl space-y-4"
+            style={{ backgroundColor: resolvedPanel, borderColor: resolvedBorder, color: resolvedText }}
+          >
+            <div>
+              <h2 id="app-exit-title" className="text-lg font-bold">Encerrar o Cartões?</h2>
+              <p className="mt-2 text-sm opacity-75">Escolha o que fazer com esta sessão. O X da janela continua mantendo o salvamento automático.</p>
+              <p className="mt-2 text-xs opacity-60">“Sair sem salvar” restaura os dados que estavam salvos quando você abriu o app.</p>
+            </div>
+
+            {exitActionError && <p className="rounded-lg border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300" role="alert">{exitActionError}</p>}
+
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => void handleFinishAppExit(true)}
+                disabled={isExitActionBusy}
+                className="rounded-xl px-4 py-2.5 text-sm font-bold disabled:opacity-50"
+                style={{ backgroundColor: resolvedAccent, color: accentTextColor }}
+              >
+                {isExitActionBusy ? 'Salvando…' : 'Salvar e sair'}
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleFinishAppExit(false)}
+                disabled={isExitActionBusy}
+                className="rounded-xl border px-4 py-2.5 text-sm font-semibold disabled:opacity-50"
+                style={{ borderColor: resolvedBorder, backgroundColor: resolvedBg, color: resolvedText }}
+              >
+                Sair sem salvar
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsExitPromptOpen(false)}
+                disabled={isExitActionBusy}
+                className="rounded-xl px-4 py-2.5 text-sm font-semibold opacity-75 hover:opacity-100 disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
 
       {/* Conteúdo Principal das Telas */}
       <main className="flex-1 w-full max-w-[1720px] mx-auto py-5 px-3 sm:px-6 lg:px-8">

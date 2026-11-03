@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AlertTriangle, Cloud, FileJson, LoaderCircle, RefreshCw, Save, Unplug } from 'lucide-react';
+import { AlertTriangle, Cloud, FileJson, FolderOpen, LoaderCircle, RefreshCw, Save, Unplug } from 'lucide-react';
 import { SeedData } from '../types';
 import {
   activateFileWithCurrentData,
@@ -9,6 +9,7 @@ import {
   DataFileStatus,
   disconnectDataFile,
   getDataFileStatus,
+  openSavedDataFileLocation,
   PendingDataFile,
   requestSavedDataFile,
 } from '../utils/browserStorage';
@@ -59,6 +60,19 @@ export const DriveFileStorage: React.FC<DriveFileStorageProps> = ({ appData, onU
     catch (error) {
       setFeedback({ text: error instanceof Error ? error.message : 'Não foi possível acessar o arquivo salvo.', error: true });
       await refreshStatus();
+    } finally { setBusy(false); }
+  };
+
+  const showFileLocation = async () => {
+    setBusy(true);
+    setFeedback(null);
+    try {
+      await openSavedDataFileLocation();
+      setFeedback({ text: 'Seletor aberto na pasta do arquivo. O arquivo conectado não foi alterado.' });
+    } catch (error) {
+      if ((error as DOMException)?.name !== 'AbortError') {
+        setFeedback({ text: error instanceof Error ? error.message : 'Não foi possível abrir o local do arquivo.', error: true });
+      }
     } finally { setBusy(false); }
   };
 
@@ -125,6 +139,9 @@ export const DriveFileStorage: React.FC<DriveFileStorageProps> = ({ appData, onU
       {status.lastWriteError && <p className="text-xs text-rose-300" role="alert">Falha ao gravar no arquivo: {status.lastWriteError}</p>}
 
       {status.state !== 'unsupported' && <div className="flex flex-wrap gap-2">
+        {status.fileName && <button type="button" onClick={() => void showFileLocation()} disabled={busy} title="Abre o seletor do navegador na pasta do arquivo sem trocar o arquivo conectado" className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-100 text-xs font-semibold flex items-center gap-2 border border-slate-700">
+          <FolderOpen className="w-4 h-4" /> Abrir local do arquivo
+        </button>}
         {needsReconnect ? (
           <button type="button" onClick={reconnect} disabled={busy} className="px-3 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 disabled:opacity-50 text-white text-xs font-semibold flex items-center gap-2">
             {busy ? <LoaderCircle className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />} Reconectar arquivo

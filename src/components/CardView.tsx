@@ -137,22 +137,10 @@ export const CardView: React.FC<CardViewProps> = ({
   // Mês central de referência da janela de 7 meses (padrão '2026-10', ocupando a 4ª posição central)
   const [referenceMonthKey, setReferenceMonthKey] = useState<string>(CURRENT_REAL_MONTH);
 
-  // Detecção dinâmica de cor de fundo e contraste automático para valores do Resumo do Responsável
-  const samplePersonBoxRef = useRef<HTMLDivElement | null>(null);
-  const [detectedBoxBg, setDetectedBoxBg] = useState<string>('');
-
-  useEffect(() => {
-    if (samplePersonBoxRef.current) {
-      const bg = window.getComputedStyle(samplePersonBoxRef.current).backgroundColor;
-      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
-        setDetectedBoxBg(bg);
-      }
-    }
-  }, [themeConfig, selectedMonthKey]);
-
   const resolvedPanelColor = getResolvedPanelColor(themeConfig);
-  const effectiveBoxBg = detectedBoxBg || resolvedPanelColor;
-  const personValueContrastColor = getAutoContrastTextColor(effectiveBoxBg);
+  // Mantém o contraste estável ao trocar o mês: o estilo dos próprios balões
+  // depende do contraste, então medir o primeiro balão criava uma dependência circular.
+  const personValueContrastColor = getAutoContrastTextColor(resolvedPanelColor);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -349,12 +337,9 @@ export const CardView: React.FC<CardViewProps> = ({
     });
   };
 
-  // Coleta todas as pessoas cadastradas + pagadores encontrados no cartão atual
+  // No painel do cartão, exibe apenas responsáveis com lançamentos neste cartão.
   const allCardPersons = useMemo(() => {
     const set = new Set<string>();
-    (persons || []).forEach((p) => {
-      if (p && p.trim()) set.add(p.trim());
-    });
     if (currentCard) {
       Object.values(currentCard.months || {}).forEach((txs) => {
         if (Array.isArray(txs)) {
@@ -367,7 +352,7 @@ export const CardView: React.FC<CardViewProps> = ({
       });
     }
     return Array.from(set);
-  }, [persons, currentCard]);
+  }, [currentCard]);
 
   // Pessoas visíveis (excluindo as ocultadas em hiddenPersons) ordenadas de forma consistente
   const visibleCardPersons = useMemo(() => {
@@ -1012,7 +997,7 @@ export const CardView: React.FC<CardViewProps> = ({
                         : 'max-h-[380px]'
                   }`}
                 >
-                  {visibleCardPersons.map((p, pIdx) => {
+                  {visibleCardPersons.map((p) => {
                     const stats = getPersonSpentStats(p);
                     const isFullyPaid = isInvoicePaid || (stats.total > 0 && stats.pending === 0);
                     const isFavorite = (favoritePersons || []).some(
@@ -1023,7 +1008,6 @@ export const CardView: React.FC<CardViewProps> = ({
                     return (
                       <div 
                         key={p} 
-                        ref={pIdx === 0 ? samplePersonBoxRef : undefined}
                         className={`px-2.5 py-1.5 rounded-lg border text-xs flex items-center justify-between gap-1.5 group transition-all ${
                           stats.total > 0 
                             ? isFullyPaid 
