@@ -23,11 +23,15 @@ import {
   BarChart3,
   ChevronDown,
   ChevronUp,
+  ArrowUp,
+  ArrowDown,
+  Settings,
   Palette,
   Layers,
   Sparkles,
 } from 'lucide-react';
-import { SeedData, TabPreferences, CustomTabNames, ThemeConfig } from '../types';
+import { SeedData, TabPreferences, CustomTabNames, ThemeConfig, ViewTab } from '../types';
+import { resolveTabOrder, isTabVisible, getVisibleTabs, toggleTabVisibility, moveTab } from '../utils/tabs';
 import { exportBackup } from '../utils/storage';
 import { DriveFileStorage } from './DriveFileStorage';
 import { ModalConfirmacao } from './ModalConfirmacao';
@@ -342,28 +346,88 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
     }
   };
 
-  // Gerenciamento de preferências de abas
-  const tabPrefs = appData.tabPreferences || {
-    pesquisar: true,
-    dividas: true,
-    simulador: true,
+  // Gerenciamento de preferências de abas (visibilidade e ordem de todas as páginas)
+  const tabPrefs: TabPreferences = appData.tabPreferences || {};
+
+  // Nomes exibidos das páginas: o nome personalizado salvo ou o padrão
+  const tabLabels = {
+    limites: appData.customTabNames?.limites || 'Painel de Limites',
+    matriz: appData.customTabNames?.matriz || 'Matriz de Gastos',
+    cartoes: appData.customTabNames?.cartoes || 'Cartões & Meses',
+    dividas: appData.customTabNames?.dividas || 'Dívidas Totais',
+    pesquisar: appData.customTabNames?.pesquisar || 'Pesquisar Itens',
+    simulador: appData.customTabNames?.simulador || 'Simulador de Gastos',
   };
 
-  const handleToggleTab = (tab: keyof TabPreferences) => {
-    const updated: TabPreferences = {
-      ...tabPrefs,
-      [tab]: !tabPrefs[tab],
-    };
+  const tabMeta: Record<ViewTab, { name: string; description: string; Icon: React.ComponentType<{ className?: string }>; iconClass: string }> = {
+    limites: {
+      name: tabLabels.limites,
+      description: 'Visão geral dos limites e do uso de cada cartão',
+      Icon: BarChart3,
+      iconClass: 'bg-sky-500/10 border-sky-500/20 text-sky-400',
+    },
+    matriz: {
+      name: tabLabels.matriz,
+      description: 'Matriz de gastos por cartão, mês e pagador, com calculadora',
+      Icon: Table,
+      iconClass: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
+    },
+    cartoes: {
+      name: tabLabels.cartoes,
+      description: 'Faturas, lançamentos e parcelas de cada cartão, mês a mês',
+      Icon: CreditCard,
+      iconClass: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
+    },
+    dividas: {
+      name: tabLabels.dividas,
+      description: 'Consulta de débitos agrupados e somatórios por responsável / pagador',
+      Icon: Users,
+      iconClass: 'bg-indigo-500/10 border-indigo-500/20 text-indigo-400',
+    },
+    pesquisar: {
+      name: tabLabels.pesquisar,
+      description: 'Localizar compras, parcelas e históricos rapidamente em todos os cartões',
+      Icon: Search,
+      iconClass: 'bg-teal-500/10 border-teal-500/20 text-teal-400',
+    },
+    simulador: {
+      name: tabLabels.simulador,
+      description: 'Divisão orçamentária entre Blocos Comercial (Mensal) e Residencial (Quinzena)',
+      Icon: Calculator,
+      iconClass: 'bg-fuchsia-500/10 border-fuchsia-500/20 text-fuchsia-400',
+    },
+    configuracoes: {
+      name: 'Configurações & Dados',
+      description: 'Esta tela. Continua acessível pela engrenagem do cabeçalho mesmo oculta na barra',
+      Icon: Settings,
+      iconClass: 'bg-slate-500/10 border-slate-500/20 text-slate-300',
+    },
+  };
+
+  const orderedTabs = resolveTabOrder(tabPrefs);
+  const visibleTabCount = getVisibleTabs(tabPrefs).length;
+
+  const handleToggleTab = (tab: ViewTab) => {
+    const updated = toggleTabVisibility(tabPrefs, tab);
+    if (!updated) {
+      showFeedback('Pelo menos uma página precisa ficar visível.', 'error');
+      return;
+    }
     onUpdateAppData({
       ...appData,
       tabPreferences: updated,
     });
     showFeedback(
-      `Aba "${tab === 'pesquisar' ? 'Pesquisa de itens' : tab === 'dividas' ? 'Dívidas totais' : 'Simulador de gastos'}" ${
-        updated[tab] ? 'ativada' : 'desativada'
-      }.`,
+      `Página "${tabMeta[tab].name}" ${isTabVisible(updated, tab) ? 'exibida' : 'ocultada'}.`,
       'info'
     );
+  };
+
+  const handleMoveTab = (tab: ViewTab, direction: -1 | 1) => {
+    onUpdateAppData({
+      ...appData,
+      tabPreferences: moveTab(tabPrefs, tab, direction),
+    });
   };
 
   // Pagadores
@@ -1174,7 +1238,7 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-bold text-white text-base group-hover:text-sky-300 transition-colors">
-                  Personalizar Abas (Visibilidade)
+                  Personalizar Abas (Visibilidade e Ordem)
                 </h3>
                 {isSectionPinned('visibilidade_abas') && (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 flex items-center gap-1">
@@ -1221,92 +1285,80 @@ export const ConfiguracoesView: React.FC<ConfiguracoesViewProps> = ({
 
         {isSectionOpen('visibilidade_abas') && (
           <div className="mt-5 space-y-3 animate-in fade-in duration-200">
-            {/* Aba 1: Pesquisa de itens */}
-            <div className="p-4 bg-slate-950/60 border border-slate-800/80 rounded-2xl flex items-center justify-between gap-4 transition-colors hover:border-slate-700">
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
-                  <Search className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Pesquisa de itens</h4>
-                  <p className="text-xs text-slate-400">
-                    Localizar compras, parcelas e históricos rapidamente em todos os cartões
-                  </p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleToggleTab('pesquisar')}
-                className={`w-13 h-7 rounded-full p-1 transition-colors cursor-pointer shrink-0 relative flex items-center ${
-                  tabPrefs.pesquisar ? 'bg-emerald-500' : 'bg-slate-800'
-                }`}
-                title={tabPrefs.pesquisar ? 'Desativar aba Pesquisa de itens' : 'Ativar aba Pesquisa de itens'}
-              >
+            <p className="text-xs text-slate-400">
+              Mostre ou oculte cada página e use as setas para definir a ordem da barra de navegação. As alterações valem na hora e ficam salvas; ocultar uma página não apaga nenhum dado.
+            </p>
+            {orderedTabs.map((tab, index) => {
+              const { name, description, Icon, iconClass } = tabMeta[tab];
+              const visible = isTabVisible(tabPrefs, tab);
+              const isLastVisible = visible && visibleTabCount <= 1;
+              return (
                 <div
-                  className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform ${
-                    tabPrefs.pesquisar ? 'translate-x-6' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
-
-            {/* Aba 2: Dívidas totais */}
-            <div className="p-4 bg-slate-950/60 border border-slate-800/80 rounded-2xl flex items-center justify-between gap-4 transition-colors hover:border-slate-700">
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
-                  <Users className="w-5 h-5" />
+                  key={tab}
+                  className="p-4 bg-slate-950/60 border border-slate-800/80 rounded-2xl flex items-center justify-between gap-4 transition-colors hover:border-slate-700"
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${iconClass}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="text-sm font-bold text-white">
+                        {index + 1}. {name}
+                        {!visible && <span className="ml-2 text-[10px] font-semibold text-slate-400">(oculta)</span>}
+                      </h4>
+                      <p className="text-xs text-slate-400">{description}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex flex-col gap-1">
+                      <button
+                        type="button"
+                        onClick={() => handleMoveTab(tab, -1)}
+                        disabled={index === 0}
+                        title={`Mover "${name}" para cima`}
+                        aria-label={`Mover ${name} para cima`}
+                        className="p-1 rounded-md bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                      >
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleMoveTab(tab, 1)}
+                        disabled={index === orderedTabs.length - 1}
+                        title={`Mover "${name}" para baixo`}
+                        aria-label={`Mover ${name} para baixo`}
+                        className="p-1 rounded-md bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                      >
+                        <ArrowDown className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleToggleTab(tab)}
+                      role="switch"
+                      aria-checked={visible}
+                      aria-label={`${visible ? 'Ocultar' : 'Exibir'} ${name}`}
+                      className={`w-13 h-7 rounded-full p-1 transition-colors cursor-pointer relative flex items-center ${
+                        visible ? 'bg-emerald-500' : 'bg-slate-800'
+                      } ${isLastVisible ? 'opacity-60' : ''}`}
+                      title={
+                        isLastVisible
+                          ? 'Pelo menos uma página precisa ficar visível'
+                          : visible
+                            ? `Ocultar "${name}"`
+                            : `Exibir "${name}"`
+                      }
+                    >
+                      <div
+                        className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform ${
+                          visible ? 'translate-x-6' : 'translate-x-0'
+                        }`}
+                      />
+                    </button>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Dívidas totais</h4>
-                  <p className="text-xs text-slate-400">
-                    Consulta de débitos agrupados e somatórios por responsável / pagador
-                  </p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleToggleTab('dividas')}
-                className={`w-13 h-7 rounded-full p-1 transition-colors cursor-pointer shrink-0 relative flex items-center ${
-                  tabPrefs.dividas ? 'bg-emerald-500' : 'bg-slate-800'
-                }`}
-                title={tabPrefs.dividas ? 'Desativar aba Dívidas totais' : 'Ativar aba Dívidas totais'}
-              >
-                <div
-                  className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform ${
-                    tabPrefs.dividas ? 'translate-x-6' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
-
-            {/* Aba 3: Simulador de gastos */}
-            <div className="p-4 bg-slate-950/60 border border-slate-800/80 rounded-2xl flex items-center justify-between gap-4 transition-colors hover:border-slate-700">
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center shrink-0">
-                  <Calculator className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Simulador de gastos</h4>
-                  <p className="text-xs text-slate-400">
-                    Divisão orçamentária entre Blocos Comercial (Mensal) e Residencial (Quinzena)
-                  </p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleToggleTab('simulador')}
-                className={`w-13 h-7 rounded-full p-1 transition-colors cursor-pointer shrink-0 relative flex items-center ${
-                  tabPrefs.simulador ? 'bg-emerald-500' : 'bg-slate-800'
-                }`}
-                title={tabPrefs.simulador ? 'Desativar aba Simulador de gastos' : 'Ativar aba Simulador de gastos'}
-              >
-                <div
-                  className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform ${
-                    tabPrefs.simulador ? 'translate-x-6' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
+              );
+            })}
           </div>
         )}
       </div>

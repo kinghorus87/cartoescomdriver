@@ -103,9 +103,16 @@ export interface SimulatorConfig {
 }
 
 export interface TabPreferences {
-  pesquisar?: boolean;
+  // Visibilidade por página: ausente ou true = visível; false = oculta (compatível com dados antigos)
+  limites?: boolean;
+  matriz?: boolean;
+  cartoes?: boolean;
   dividas?: boolean;
+  pesquisar?: boolean;
   simulador?: boolean;
+  configuracoes?: boolean;
+  // Ordem personalizada das páginas na navegação principal (páginas ausentes entram no fim, na ordem padrão)
+  order?: ViewTab[];
 }
 
 export interface SeedData {

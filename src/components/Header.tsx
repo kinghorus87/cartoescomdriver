@@ -11,6 +11,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { isDarkAccent } from '../utils/cardColors';
+import { getVisibleTabs } from '../utils/tabs';
 
 interface HeaderProps {
   activeTab: ViewTab;
@@ -41,6 +42,16 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const isAccentDark = isDarkAccent(accentColor);
   const activeTabTextColor = isAccentDark ? '#ffffff' : accentColor;
+
+  const tabInfo: Record<ViewTab, { Icon: React.ComponentType<{ className?: string }>; label: string }> = {
+    limites: { Icon: BarChart3, label: customTabNames?.limites || 'Painel de Limites' },
+    matriz: { Icon: Table, label: customTabNames?.matriz || 'Matriz de Gastos' },
+    cartoes: { Icon: CreditCard, label: customTabNames?.cartoes || 'Cartões & Meses' },
+    dividas: { Icon: Users, label: customTabNames?.dividas || 'Dívidas Totais' },
+    pesquisar: { Icon: Search, label: customTabNames?.pesquisar || 'Pesquisar Itens' },
+    simulador: { Icon: Calculator, label: customTabNames?.simulador || 'Simulador de Gastos' },
+    configuracoes: { Icon: Settings, label: 'Configurações & Dados' },
+  };
 
   const getActiveTabStyle = (tab: ViewTab) => {
     if (activeTab !== tab) {
@@ -139,74 +150,20 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 py-2 border-t"
           style={{ borderTopColor: 'var(--theme-border, rgba(148, 163, 184, 0.16))' }}
         >
-          <button
-            onClick={() => onTabChange('limites')}
-            style={getActiveTabStyle('limites')}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-          >
-            <BarChart3 className="w-4 h-4 shrink-0" />
-            <span>{customTabNames?.limites || 'Painel de Limites'}</span>
-          </button>
-
-          <button
-            onClick={() => onTabChange('matriz')}
-            style={getActiveTabStyle('matriz')}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-          >
-            <Table className="w-4 h-4 shrink-0" />
-            <span>{customTabNames?.matriz || 'Matriz de Gastos'}</span>
-          </button>
-
-          <button
-            onClick={() => onTabChange('cartoes')}
-            style={getActiveTabStyle('cartoes')}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-          >
-            <CreditCard className="w-4 h-4 shrink-0" />
-            <span>{customTabNames?.cartoes || 'Cartões & Meses'}</span>
-          </button>
-
-          {tabPreferences?.dividas !== false && (
-            <button
-              onClick={() => onTabChange('dividas')}
-              style={getActiveTabStyle('dividas')}
-              className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-            >
-              <Users className="w-4 h-4 shrink-0" />
-              <span>{customTabNames?.dividas || 'Dívidas Totais'}</span>
-            </button>
-          )}
-
-          {tabPreferences?.pesquisar !== false && (
-            <button
-              onClick={() => onTabChange('pesquisar')}
-              style={getActiveTabStyle('pesquisar')}
-              className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-            >
-              <Search className="w-4 h-4 shrink-0" />
-              <span>{customTabNames?.pesquisar || 'Pesquisar Itens'}</span>
-            </button>
-          )}
-
-          {tabPreferences?.simulador !== false && (
-            <button
-              onClick={() => onTabChange('simulador')}
-              style={getActiveTabStyle('simulador')}
-              className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-            >
-              <Calculator className="w-4 h-4 shrink-0" />
-              <span>{customTabNames?.simulador || 'Simulador de Gastos'}</span>
-            </button>
-          )}
-
-          <button
-            onClick={() => onTabChange('configuracoes')}
-            style={getActiveTabStyle('configuracoes')}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
-          >
-            <Settings className="w-4 h-4 shrink-0" />
-            <span>Configurações &amp; Dados</span>
-          </button>
+          {getVisibleTabs(tabPreferences).map((tab) => {
+            const { Icon, label } = tabInfo[tab];
+            return (
+              <button
+                key={tab}
+                onClick={() => onTabChange(tab)}
+                style={getActiveTabStyle(tab)}
+                className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all whitespace-nowrap cursor-pointer border hover:opacity-90 active:scale-95"
+              >
+                <Icon className="w-4 h-4 shrink-0" />
+                <span>{label}</span>
+              </button>
+            );
+          })}
         </nav>
       </div>
     </header>

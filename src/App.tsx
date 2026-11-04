@@ -35,6 +35,7 @@ import {
   getContrastTextColor, 
   isLightColor 
 } from './utils/cardColors';
+import { resolveActiveTab } from './utils/tabs';
 import { Header } from './components/Header';
 import { DashboardLimites } from './components/DashboardLimites';
 import { MatrizGastosView } from './components/MatrizGastosView';
@@ -93,16 +94,10 @@ export default function App() {
     }
   }, [data.cards, selectedCardId]);
 
-  // Redirecionamento de segurança se a aba ativa for desativada nas preferências
+  // Redirecionamento de segurança se a aba ativa for ocultada nas preferências
   useEffect(() => {
-    const tabPrefs = data.tabPreferences || { pesquisar: true, dividas: true, simulador: true };
-    if (activeTab === 'pesquisar' && tabPrefs.pesquisar === false) {
-      setActiveTab('limites');
-    } else if (activeTab === 'dividas' && tabPrefs.dividas === false) {
-      setActiveTab('limites');
-    } else if (activeTab === 'simulador' && tabPrefs.simulador === false) {
-      setActiveTab('limites');
-    }
+    const target = resolveActiveTab(activeTab, data.tabPreferences);
+    if (target !== activeTab) setActiveTab(target);
   }, [activeTab, data.tabPreferences]);
 
   // Estado para Modal de Confirmação Seguro
